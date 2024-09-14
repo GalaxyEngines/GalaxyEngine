@@ -45,6 +45,8 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/test/cmake_install.cmake")
+  include("/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/cmake_install.cmake")
+  include("/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/glm/cmake_install.cmake")
 
 endif()
 

@@ -8,5 +8,7 @@ aux_source_directory(src soure)
 include_directories(include)
 
 add_subdirectory(test)
+add_subdirectory(thirdparty/GLFW)
+add_subdirectory(thirdparty/glm)
 
 add_executable(GalaxyEngine ${soure})

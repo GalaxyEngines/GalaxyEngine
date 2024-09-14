@@ -1,4 +1,10 @@
 /bin/cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_MAKE_PROGRAM=/opt/clion/bin/ninja/linux/x64/ninja -G Ninja -S /home/plaidmrdeer/dev/GalaxyEngine -B /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release
+-- Including Wayland support
+-- Including X11 support
+-- Could NOT find Doxygen (missing: DOXYGEN_EXECUTABLE) 
+-- Documentation generation requires Doxygen 1.9.8 or later
+-- GLM: Version 1.0.2
+-- GLM: Build with C++ features auto detection
 -- Configuring done (0.0s)
 -- Generating done (0.0s)
 -- Build files have been written to: /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release

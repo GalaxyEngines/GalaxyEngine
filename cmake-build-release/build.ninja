@@ -103,6 +103,48 @@ build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
 
 build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 
+
+#############################################
+# Utility command for list_install_components
+
+build list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build CMakeFiles/install.util: CUSTOM_COMMAND all
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release && /usr/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build install: phony CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build CMakeFiles/install/local.util: CUSTOM_COMMAND all
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release && /usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build install/local: phony CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build CMakeFiles/install/strip.util: CUSTOM_COMMAND all
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release && /usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build install/strip: phony CMakeFiles/install/strip.util
+
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
 # /home/plaidmrdeer/dev/GalaxyEngine/CMakeLists.txt
@@ -132,8 +174,871 @@ build test/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
 
 build test/rebuild_cache: phony test/CMakeFiles/rebuild_cache.util
 
+
+#############################################
+# Utility command for list_install_components
+
+build test/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build test/CMakeFiles/install.util: CUSTOM_COMMAND test/all
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/test && /usr/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build test/install: phony test/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build test/CMakeFiles/install/local.util: CUSTOM_COMMAND test/all
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/test && /usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build test/install/local: phony test/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build test/CMakeFiles/install/strip.util: CUSTOM_COMMAND test/all
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/test && /usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build test/install/strip: phony test/CMakeFiles/install/strip.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /home/plaidmrdeer/dev/GalaxyEngine/CMakeLists.txt
+# =============================================================================
+
+
+#############################################
+# Utility command for uninstall
+
+build thirdparty/GLFW/uninstall: phony thirdparty/GLFW/CMakeFiles/uninstall
+
+
+#############################################
+# Utility command for edit_cache
+
+build thirdparty/GLFW/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW && /usr/bin/ccmake -S/home/plaidmrdeer/dev/GalaxyEngine -B/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build thirdparty/GLFW/edit_cache: phony thirdparty/GLFW/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build thirdparty/GLFW/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW && /usr/bin/cmake --regenerate-during-build -S/home/plaidmrdeer/dev/GalaxyEngine -B/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build thirdparty/GLFW/rebuild_cache: phony thirdparty/GLFW/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build thirdparty/GLFW/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build thirdparty/GLFW/CMakeFiles/install.util: CUSTOM_COMMAND thirdparty/GLFW/all
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW && /usr/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build thirdparty/GLFW/install: phony thirdparty/GLFW/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build thirdparty/GLFW/CMakeFiles/install/local.util: CUSTOM_COMMAND thirdparty/GLFW/all
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW && /usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build thirdparty/GLFW/install/local: phony thirdparty/GLFW/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build thirdparty/GLFW/CMakeFiles/install/strip.util: CUSTOM_COMMAND thirdparty/GLFW/all
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW && /usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build thirdparty/GLFW/install/strip: phony thirdparty/GLFW/CMakeFiles/install/strip.util
+
+
+#############################################
+# Custom command for thirdparty/GLFW/CMakeFiles/uninstall
+
+build thirdparty/GLFW/CMakeFiles/uninstall | ${cmake_ninja_workdir}thirdparty/GLFW/CMakeFiles/uninstall: CUSTOM_COMMAND
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW && /usr/bin/cmake -P /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/cmake_uninstall.cmake
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target glfw
+
+
+#############################################
+# Order-only phony target for glfw
+
+build cmake_object_order_depends_target_glfw: phony || thirdparty/GLFW/src/fractional-scale-v1-client-protocol-code.h thirdparty/GLFW/src/fractional-scale-v1-client-protocol.h thirdparty/GLFW/src/idle-inhibit-unstable-v1-client-protocol-code.h thirdparty/GLFW/src/idle-inhibit-unstable-v1-client-protocol.h thirdparty/GLFW/src/pointer-constraints-unstable-v1-client-protocol-code.h thirdparty/GLFW/src/pointer-constraints-unstable-v1-client-protocol.h thirdparty/GLFW/src/relative-pointer-unstable-v1-client-protocol-code.h thirdparty/GLFW/src/relative-pointer-unstable-v1-client-protocol.h thirdparty/GLFW/src/viewporter-client-protocol-code.h thirdparty/GLFW/src/viewporter-client-protocol.h thirdparty/GLFW/src/wayland-client-protocol-code.h thirdparty/GLFW/src/wayland-client-protocol.h thirdparty/GLFW/src/xdg-activation-v1-client-protocol-code.h thirdparty/GLFW/src/xdg-activation-v1-client-protocol.h thirdparty/GLFW/src/xdg-decoration-unstable-v1-client-protocol-code.h thirdparty/GLFW/src/xdg-decoration-unstable-v1-client-protocol.h thirdparty/GLFW/src/xdg-shell-client-protocol-code.h thirdparty/GLFW/src/xdg-shell-client-protocol.h
+
+build thirdparty/GLFW/src/CMakeFiles/glfw.dir/context.c.o: C_COMPILER__glfw_unscanned_Release /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src/context.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = thirdparty/GLFW/src/CMakeFiles/glfw.dir/context.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I/home/plaidmrdeer/dev/GalaxyEngine/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src -I/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src
+  OBJECT_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+
+build thirdparty/GLFW/src/CMakeFiles/glfw.dir/init.c.o: C_COMPILER__glfw_unscanned_Release /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src/init.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = thirdparty/GLFW/src/CMakeFiles/glfw.dir/init.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I/home/plaidmrdeer/dev/GalaxyEngine/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src -I/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src
+  OBJECT_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+
+build thirdparty/GLFW/src/CMakeFiles/glfw.dir/input.c.o: C_COMPILER__glfw_unscanned_Release /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src/input.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = thirdparty/GLFW/src/CMakeFiles/glfw.dir/input.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I/home/plaidmrdeer/dev/GalaxyEngine/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src -I/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src
+  OBJECT_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+
+build thirdparty/GLFW/src/CMakeFiles/glfw.dir/monitor.c.o: C_COMPILER__glfw_unscanned_Release /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src/monitor.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = thirdparty/GLFW/src/CMakeFiles/glfw.dir/monitor.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I/home/plaidmrdeer/dev/GalaxyEngine/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src -I/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src
+  OBJECT_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+
+build thirdparty/GLFW/src/CMakeFiles/glfw.dir/platform.c.o: C_COMPILER__glfw_unscanned_Release /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src/platform.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = thirdparty/GLFW/src/CMakeFiles/glfw.dir/platform.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I/home/plaidmrdeer/dev/GalaxyEngine/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src -I/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src
+  OBJECT_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+
+build thirdparty/GLFW/src/CMakeFiles/glfw.dir/vulkan.c.o: C_COMPILER__glfw_unscanned_Release /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src/vulkan.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = thirdparty/GLFW/src/CMakeFiles/glfw.dir/vulkan.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I/home/plaidmrdeer/dev/GalaxyEngine/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src -I/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src
+  OBJECT_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+
+build thirdparty/GLFW/src/CMakeFiles/glfw.dir/window.c.o: C_COMPILER__glfw_unscanned_Release /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src/window.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = thirdparty/GLFW/src/CMakeFiles/glfw.dir/window.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I/home/plaidmrdeer/dev/GalaxyEngine/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src -I/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src
+  OBJECT_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+
+build thirdparty/GLFW/src/CMakeFiles/glfw.dir/egl_context.c.o: C_COMPILER__glfw_unscanned_Release /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src/egl_context.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = thirdparty/GLFW/src/CMakeFiles/glfw.dir/egl_context.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I/home/plaidmrdeer/dev/GalaxyEngine/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src -I/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src
+  OBJECT_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+
+build thirdparty/GLFW/src/CMakeFiles/glfw.dir/osmesa_context.c.o: C_COMPILER__glfw_unscanned_Release /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src/osmesa_context.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = thirdparty/GLFW/src/CMakeFiles/glfw.dir/osmesa_context.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I/home/plaidmrdeer/dev/GalaxyEngine/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src -I/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src
+  OBJECT_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+
+build thirdparty/GLFW/src/CMakeFiles/glfw.dir/null_init.c.o: C_COMPILER__glfw_unscanned_Release /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src/null_init.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = thirdparty/GLFW/src/CMakeFiles/glfw.dir/null_init.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I/home/plaidmrdeer/dev/GalaxyEngine/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src -I/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src
+  OBJECT_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+
+build thirdparty/GLFW/src/CMakeFiles/glfw.dir/null_monitor.c.o: C_COMPILER__glfw_unscanned_Release /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src/null_monitor.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = thirdparty/GLFW/src/CMakeFiles/glfw.dir/null_monitor.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I/home/plaidmrdeer/dev/GalaxyEngine/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src -I/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src
+  OBJECT_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+
+build thirdparty/GLFW/src/CMakeFiles/glfw.dir/null_window.c.o: C_COMPILER__glfw_unscanned_Release /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src/null_window.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = thirdparty/GLFW/src/CMakeFiles/glfw.dir/null_window.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I/home/plaidmrdeer/dev/GalaxyEngine/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src -I/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src
+  OBJECT_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+
+build thirdparty/GLFW/src/CMakeFiles/glfw.dir/null_joystick.c.o: C_COMPILER__glfw_unscanned_Release /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src/null_joystick.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = thirdparty/GLFW/src/CMakeFiles/glfw.dir/null_joystick.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I/home/plaidmrdeer/dev/GalaxyEngine/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src -I/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src
+  OBJECT_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+
+build thirdparty/GLFW/src/CMakeFiles/glfw.dir/posix_module.c.o: C_COMPILER__glfw_unscanned_Release /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src/posix_module.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = thirdparty/GLFW/src/CMakeFiles/glfw.dir/posix_module.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I/home/plaidmrdeer/dev/GalaxyEngine/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src -I/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src
+  OBJECT_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+
+build thirdparty/GLFW/src/CMakeFiles/glfw.dir/posix_time.c.o: C_COMPILER__glfw_unscanned_Release /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src/posix_time.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = thirdparty/GLFW/src/CMakeFiles/glfw.dir/posix_time.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I/home/plaidmrdeer/dev/GalaxyEngine/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src -I/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src
+  OBJECT_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+
+build thirdparty/GLFW/src/CMakeFiles/glfw.dir/posix_thread.c.o: C_COMPILER__glfw_unscanned_Release /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src/posix_thread.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = thirdparty/GLFW/src/CMakeFiles/glfw.dir/posix_thread.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I/home/plaidmrdeer/dev/GalaxyEngine/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src -I/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src
+  OBJECT_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+
+build thirdparty/GLFW/src/CMakeFiles/glfw.dir/x11_init.c.o: C_COMPILER__glfw_unscanned_Release /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src/x11_init.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = thirdparty/GLFW/src/CMakeFiles/glfw.dir/x11_init.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I/home/plaidmrdeer/dev/GalaxyEngine/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src -I/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src
+  OBJECT_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+
+build thirdparty/GLFW/src/CMakeFiles/glfw.dir/x11_monitor.c.o: C_COMPILER__glfw_unscanned_Release /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src/x11_monitor.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = thirdparty/GLFW/src/CMakeFiles/glfw.dir/x11_monitor.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I/home/plaidmrdeer/dev/GalaxyEngine/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src -I/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src
+  OBJECT_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+
+build thirdparty/GLFW/src/CMakeFiles/glfw.dir/x11_window.c.o: C_COMPILER__glfw_unscanned_Release /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src/x11_window.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = thirdparty/GLFW/src/CMakeFiles/glfw.dir/x11_window.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I/home/plaidmrdeer/dev/GalaxyEngine/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src -I/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src
+  OBJECT_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+
+build thirdparty/GLFW/src/CMakeFiles/glfw.dir/xkb_unicode.c.o: C_COMPILER__glfw_unscanned_Release /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src/xkb_unicode.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = thirdparty/GLFW/src/CMakeFiles/glfw.dir/xkb_unicode.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I/home/plaidmrdeer/dev/GalaxyEngine/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src -I/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src
+  OBJECT_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+
+build thirdparty/GLFW/src/CMakeFiles/glfw.dir/glx_context.c.o: C_COMPILER__glfw_unscanned_Release /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src/glx_context.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = thirdparty/GLFW/src/CMakeFiles/glfw.dir/glx_context.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I/home/plaidmrdeer/dev/GalaxyEngine/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src -I/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src
+  OBJECT_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+
+build thirdparty/GLFW/src/CMakeFiles/glfw.dir/wl_init.c.o: C_COMPILER__glfw_unscanned_Release /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src/wl_init.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = thirdparty/GLFW/src/CMakeFiles/glfw.dir/wl_init.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I/home/plaidmrdeer/dev/GalaxyEngine/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src -I/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src
+  OBJECT_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+
+build thirdparty/GLFW/src/CMakeFiles/glfw.dir/wl_monitor.c.o: C_COMPILER__glfw_unscanned_Release /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src/wl_monitor.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = thirdparty/GLFW/src/CMakeFiles/glfw.dir/wl_monitor.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I/home/plaidmrdeer/dev/GalaxyEngine/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src -I/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src
+  OBJECT_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+
+build thirdparty/GLFW/src/CMakeFiles/glfw.dir/wl_window.c.o: C_COMPILER__glfw_unscanned_Release /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src/wl_window.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = thirdparty/GLFW/src/CMakeFiles/glfw.dir/wl_window.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I/home/plaidmrdeer/dev/GalaxyEngine/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src -I/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src
+  OBJECT_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+
+build thirdparty/GLFW/src/CMakeFiles/glfw.dir/linux_joystick.c.o: C_COMPILER__glfw_unscanned_Release /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src/linux_joystick.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = thirdparty/GLFW/src/CMakeFiles/glfw.dir/linux_joystick.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I/home/plaidmrdeer/dev/GalaxyEngine/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src -I/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src
+  OBJECT_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+
+build thirdparty/GLFW/src/CMakeFiles/glfw.dir/posix_poll.c.o: C_COMPILER__glfw_unscanned_Release /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src/posix_poll.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
+  DEP_FILE = thirdparty/GLFW/src/CMakeFiles/glfw.dir/posix_poll.c.o.d
+  FLAGS = -O3 -DNDEBUG -std=c99 -fPIC -fdiagnostics-color=always -Wall
+  INCLUDES = -I/home/plaidmrdeer/dev/GalaxyEngine/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src -I/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src
+  OBJECT_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+  OBJECT_FILE_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target glfw
+
+
+#############################################
+# Link the static library thirdparty/GLFW/src/libglfw3.a
+
+build thirdparty/GLFW/src/libglfw3.a: C_STATIC_LIBRARY_LINKER__glfw_Release thirdparty/GLFW/src/CMakeFiles/glfw.dir/context.c.o thirdparty/GLFW/src/CMakeFiles/glfw.dir/init.c.o thirdparty/GLFW/src/CMakeFiles/glfw.dir/input.c.o thirdparty/GLFW/src/CMakeFiles/glfw.dir/monitor.c.o thirdparty/GLFW/src/CMakeFiles/glfw.dir/platform.c.o thirdparty/GLFW/src/CMakeFiles/glfw.dir/vulkan.c.o thirdparty/GLFW/src/CMakeFiles/glfw.dir/window.c.o thirdparty/GLFW/src/CMakeFiles/glfw.dir/egl_context.c.o thirdparty/GLFW/src/CMakeFiles/glfw.dir/osmesa_context.c.o thirdparty/GLFW/src/CMakeFiles/glfw.dir/null_init.c.o thirdparty/GLFW/src/CMakeFiles/glfw.dir/null_monitor.c.o thirdparty/GLFW/src/CMakeFiles/glfw.dir/null_window.c.o thirdparty/GLFW/src/CMakeFiles/glfw.dir/null_joystick.c.o thirdparty/GLFW/src/CMakeFiles/glfw.dir/posix_module.c.o thirdparty/GLFW/src/CMakeFiles/glfw.dir/posix_time.c.o thirdparty/GLFW/src/CMakeFiles/glfw.dir/posix_thread.c.o thirdparty/GLFW/src/CMakeFiles/glfw.dir/x11_init.c.o thirdparty/GLFW/src/CMakeFiles/glfw.dir/x11_monitor.c.o thirdparty/GLFW/src/CMakeFiles/glfw.dir/x11_window.c.o thirdparty/GLFW/src/CMakeFiles/glfw.dir/xkb_unicode.c.o thirdparty/GLFW/src/CMakeFiles/glfw.dir/glx_context.c.o thirdparty/GLFW/src/CMakeFiles/glfw.dir/wl_init.c.o thirdparty/GLFW/src/CMakeFiles/glfw.dir/wl_monitor.c.o thirdparty/GLFW/src/CMakeFiles/glfw.dir/wl_window.c.o thirdparty/GLFW/src/CMakeFiles/glfw.dir/linux_joystick.c.o thirdparty/GLFW/src/CMakeFiles/glfw.dir/posix_poll.c.o
+  LANGUAGE_COMPILE_FLAGS = -O3 -DNDEBUG
+  OBJECT_DIR = thirdparty/GLFW/src/CMakeFiles/glfw.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = thirdparty/GLFW/src/libglfw3.a
+  TARGET_PDB = glfw3.a.dbg
+
+
+#############################################
+# Utility command for update_mappings
+
+build thirdparty/GLFW/src/update_mappings: phony thirdparty/GLFW/src/CMakeFiles/update_mappings
+
+
+#############################################
+# Utility command for edit_cache
+
+build thirdparty/GLFW/src/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src && /usr/bin/ccmake -S/home/plaidmrdeer/dev/GalaxyEngine -B/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build thirdparty/GLFW/src/edit_cache: phony thirdparty/GLFW/src/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build thirdparty/GLFW/src/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src && /usr/bin/cmake --regenerate-during-build -S/home/plaidmrdeer/dev/GalaxyEngine -B/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build thirdparty/GLFW/src/rebuild_cache: phony thirdparty/GLFW/src/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build thirdparty/GLFW/src/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build thirdparty/GLFW/src/CMakeFiles/install.util: CUSTOM_COMMAND thirdparty/GLFW/src/all
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src && /usr/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build thirdparty/GLFW/src/install: phony thirdparty/GLFW/src/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build thirdparty/GLFW/src/CMakeFiles/install/local.util: CUSTOM_COMMAND thirdparty/GLFW/src/all
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src && /usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build thirdparty/GLFW/src/install/local: phony thirdparty/GLFW/src/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build thirdparty/GLFW/src/CMakeFiles/install/strip.util: CUSTOM_COMMAND thirdparty/GLFW/src/all
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src && /usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build thirdparty/GLFW/src/install/strip: phony thirdparty/GLFW/src/CMakeFiles/install/strip.util
+
+
+#############################################
+# Custom command for thirdparty/GLFW/src/wayland-client-protocol.h
+
+build thirdparty/GLFW/src/wayland-client-protocol.h | ${cmake_ninja_workdir}thirdparty/GLFW/src/wayland-client-protocol.h: CUSTOM_COMMAND /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/deps/wayland/wayland.xml
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src && /usr/bin/wayland-scanner client-header /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/deps/wayland/wayland.xml wayland-client-protocol.h
+  DESC = Generating wayland-client-protocol.h
+  restat = 1
+
+
+#############################################
+# Custom command for thirdparty/GLFW/src/wayland-client-protocol-code.h
+
+build thirdparty/GLFW/src/wayland-client-protocol-code.h | ${cmake_ninja_workdir}thirdparty/GLFW/src/wayland-client-protocol-code.h: CUSTOM_COMMAND /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/deps/wayland/wayland.xml
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src && /usr/bin/wayland-scanner private-code /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/deps/wayland/wayland.xml wayland-client-protocol-code.h
+  DESC = Generating wayland-client-protocol-code.h
+  restat = 1
+
+
+#############################################
+# Custom command for thirdparty/GLFW/src/viewporter-client-protocol.h
+
+build thirdparty/GLFW/src/viewporter-client-protocol.h | ${cmake_ninja_workdir}thirdparty/GLFW/src/viewporter-client-protocol.h: CUSTOM_COMMAND /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/deps/wayland/viewporter.xml
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src && /usr/bin/wayland-scanner client-header /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/deps/wayland/viewporter.xml viewporter-client-protocol.h
+  DESC = Generating viewporter-client-protocol.h
+  restat = 1
+
+
+#############################################
+# Custom command for thirdparty/GLFW/src/viewporter-client-protocol-code.h
+
+build thirdparty/GLFW/src/viewporter-client-protocol-code.h | ${cmake_ninja_workdir}thirdparty/GLFW/src/viewporter-client-protocol-code.h: CUSTOM_COMMAND /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/deps/wayland/viewporter.xml
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src && /usr/bin/wayland-scanner private-code /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/deps/wayland/viewporter.xml viewporter-client-protocol-code.h
+  DESC = Generating viewporter-client-protocol-code.h
+  restat = 1
+
+
+#############################################
+# Custom command for thirdparty/GLFW/src/xdg-shell-client-protocol.h
+
+build thirdparty/GLFW/src/xdg-shell-client-protocol.h | ${cmake_ninja_workdir}thirdparty/GLFW/src/xdg-shell-client-protocol.h: CUSTOM_COMMAND /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/deps/wayland/xdg-shell.xml
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src && /usr/bin/wayland-scanner client-header /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/deps/wayland/xdg-shell.xml xdg-shell-client-protocol.h
+  DESC = Generating xdg-shell-client-protocol.h
+  restat = 1
+
+
+#############################################
+# Custom command for thirdparty/GLFW/src/xdg-shell-client-protocol-code.h
+
+build thirdparty/GLFW/src/xdg-shell-client-protocol-code.h | ${cmake_ninja_workdir}thirdparty/GLFW/src/xdg-shell-client-protocol-code.h: CUSTOM_COMMAND /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/deps/wayland/xdg-shell.xml
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src && /usr/bin/wayland-scanner private-code /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/deps/wayland/xdg-shell.xml xdg-shell-client-protocol-code.h
+  DESC = Generating xdg-shell-client-protocol-code.h
+  restat = 1
+
+
+#############################################
+# Custom command for thirdparty/GLFW/src/idle-inhibit-unstable-v1-client-protocol.h
+
+build thirdparty/GLFW/src/idle-inhibit-unstable-v1-client-protocol.h | ${cmake_ninja_workdir}thirdparty/GLFW/src/idle-inhibit-unstable-v1-client-protocol.h: CUSTOM_COMMAND /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/deps/wayland/idle-inhibit-unstable-v1.xml
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src && /usr/bin/wayland-scanner client-header /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/deps/wayland/idle-inhibit-unstable-v1.xml idle-inhibit-unstable-v1-client-protocol.h
+  DESC = Generating idle-inhibit-unstable-v1-client-protocol.h
+  restat = 1
+
+
+#############################################
+# Custom command for thirdparty/GLFW/src/idle-inhibit-unstable-v1-client-protocol-code.h
+
+build thirdparty/GLFW/src/idle-inhibit-unstable-v1-client-protocol-code.h | ${cmake_ninja_workdir}thirdparty/GLFW/src/idle-inhibit-unstable-v1-client-protocol-code.h: CUSTOM_COMMAND /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/deps/wayland/idle-inhibit-unstable-v1.xml
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src && /usr/bin/wayland-scanner private-code /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/deps/wayland/idle-inhibit-unstable-v1.xml idle-inhibit-unstable-v1-client-protocol-code.h
+  DESC = Generating idle-inhibit-unstable-v1-client-protocol-code.h
+  restat = 1
+
+
+#############################################
+# Custom command for thirdparty/GLFW/src/pointer-constraints-unstable-v1-client-protocol.h
+
+build thirdparty/GLFW/src/pointer-constraints-unstable-v1-client-protocol.h | ${cmake_ninja_workdir}thirdparty/GLFW/src/pointer-constraints-unstable-v1-client-protocol.h: CUSTOM_COMMAND /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/deps/wayland/pointer-constraints-unstable-v1.xml
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src && /usr/bin/wayland-scanner client-header /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/deps/wayland/pointer-constraints-unstable-v1.xml pointer-constraints-unstable-v1-client-protocol.h
+  DESC = Generating pointer-constraints-unstable-v1-client-protocol.h
+  restat = 1
+
+
+#############################################
+# Custom command for thirdparty/GLFW/src/pointer-constraints-unstable-v1-client-protocol-code.h
+
+build thirdparty/GLFW/src/pointer-constraints-unstable-v1-client-protocol-code.h | ${cmake_ninja_workdir}thirdparty/GLFW/src/pointer-constraints-unstable-v1-client-protocol-code.h: CUSTOM_COMMAND /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/deps/wayland/pointer-constraints-unstable-v1.xml
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src && /usr/bin/wayland-scanner private-code /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/deps/wayland/pointer-constraints-unstable-v1.xml pointer-constraints-unstable-v1-client-protocol-code.h
+  DESC = Generating pointer-constraints-unstable-v1-client-protocol-code.h
+  restat = 1
+
+
+#############################################
+# Custom command for thirdparty/GLFW/src/relative-pointer-unstable-v1-client-protocol.h
+
+build thirdparty/GLFW/src/relative-pointer-unstable-v1-client-protocol.h | ${cmake_ninja_workdir}thirdparty/GLFW/src/relative-pointer-unstable-v1-client-protocol.h: CUSTOM_COMMAND /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/deps/wayland/relative-pointer-unstable-v1.xml
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src && /usr/bin/wayland-scanner client-header /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/deps/wayland/relative-pointer-unstable-v1.xml relative-pointer-unstable-v1-client-protocol.h
+  DESC = Generating relative-pointer-unstable-v1-client-protocol.h
+  restat = 1
+
+
+#############################################
+# Custom command for thirdparty/GLFW/src/relative-pointer-unstable-v1-client-protocol-code.h
+
+build thirdparty/GLFW/src/relative-pointer-unstable-v1-client-protocol-code.h | ${cmake_ninja_workdir}thirdparty/GLFW/src/relative-pointer-unstable-v1-client-protocol-code.h: CUSTOM_COMMAND /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/deps/wayland/relative-pointer-unstable-v1.xml
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src && /usr/bin/wayland-scanner private-code /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/deps/wayland/relative-pointer-unstable-v1.xml relative-pointer-unstable-v1-client-protocol-code.h
+  DESC = Generating relative-pointer-unstable-v1-client-protocol-code.h
+  restat = 1
+
+
+#############################################
+# Custom command for thirdparty/GLFW/src/fractional-scale-v1-client-protocol.h
+
+build thirdparty/GLFW/src/fractional-scale-v1-client-protocol.h | ${cmake_ninja_workdir}thirdparty/GLFW/src/fractional-scale-v1-client-protocol.h: CUSTOM_COMMAND /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/deps/wayland/fractional-scale-v1.xml
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src && /usr/bin/wayland-scanner client-header /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/deps/wayland/fractional-scale-v1.xml fractional-scale-v1-client-protocol.h
+  DESC = Generating fractional-scale-v1-client-protocol.h
+  restat = 1
+
+
+#############################################
+# Custom command for thirdparty/GLFW/src/fractional-scale-v1-client-protocol-code.h
+
+build thirdparty/GLFW/src/fractional-scale-v1-client-protocol-code.h | ${cmake_ninja_workdir}thirdparty/GLFW/src/fractional-scale-v1-client-protocol-code.h: CUSTOM_COMMAND /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/deps/wayland/fractional-scale-v1.xml
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src && /usr/bin/wayland-scanner private-code /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/deps/wayland/fractional-scale-v1.xml fractional-scale-v1-client-protocol-code.h
+  DESC = Generating fractional-scale-v1-client-protocol-code.h
+  restat = 1
+
+
+#############################################
+# Custom command for thirdparty/GLFW/src/xdg-activation-v1-client-protocol.h
+
+build thirdparty/GLFW/src/xdg-activation-v1-client-protocol.h | ${cmake_ninja_workdir}thirdparty/GLFW/src/xdg-activation-v1-client-protocol.h: CUSTOM_COMMAND /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/deps/wayland/xdg-activation-v1.xml
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src && /usr/bin/wayland-scanner client-header /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/deps/wayland/xdg-activation-v1.xml xdg-activation-v1-client-protocol.h
+  DESC = Generating xdg-activation-v1-client-protocol.h
+  restat = 1
+
+
+#############################################
+# Custom command for thirdparty/GLFW/src/xdg-activation-v1-client-protocol-code.h
+
+build thirdparty/GLFW/src/xdg-activation-v1-client-protocol-code.h | ${cmake_ninja_workdir}thirdparty/GLFW/src/xdg-activation-v1-client-protocol-code.h: CUSTOM_COMMAND /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/deps/wayland/xdg-activation-v1.xml
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src && /usr/bin/wayland-scanner private-code /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/deps/wayland/xdg-activation-v1.xml xdg-activation-v1-client-protocol-code.h
+  DESC = Generating xdg-activation-v1-client-protocol-code.h
+  restat = 1
+
+
+#############################################
+# Custom command for thirdparty/GLFW/src/xdg-decoration-unstable-v1-client-protocol.h
+
+build thirdparty/GLFW/src/xdg-decoration-unstable-v1-client-protocol.h | ${cmake_ninja_workdir}thirdparty/GLFW/src/xdg-decoration-unstable-v1-client-protocol.h: CUSTOM_COMMAND /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/deps/wayland/xdg-decoration-unstable-v1.xml
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src && /usr/bin/wayland-scanner client-header /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/deps/wayland/xdg-decoration-unstable-v1.xml xdg-decoration-unstable-v1-client-protocol.h
+  DESC = Generating xdg-decoration-unstable-v1-client-protocol.h
+  restat = 1
+
+
+#############################################
+# Custom command for thirdparty/GLFW/src/xdg-decoration-unstable-v1-client-protocol-code.h
+
+build thirdparty/GLFW/src/xdg-decoration-unstable-v1-client-protocol-code.h | ${cmake_ninja_workdir}thirdparty/GLFW/src/xdg-decoration-unstable-v1-client-protocol-code.h: CUSTOM_COMMAND /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/deps/wayland/xdg-decoration-unstable-v1.xml
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src && /usr/bin/wayland-scanner private-code /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/deps/wayland/xdg-decoration-unstable-v1.xml xdg-decoration-unstable-v1-client-protocol-code.h
+  DESC = Generating xdg-decoration-unstable-v1-client-protocol-code.h
+  restat = 1
+
+
+#############################################
+# Custom command for thirdparty/GLFW/src/CMakeFiles/update_mappings
+
+build thirdparty/GLFW/src/CMakeFiles/update_mappings | ${cmake_ninja_workdir}thirdparty/GLFW/src/CMakeFiles/update_mappings: CUSTOM_COMMAND
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src && /usr/bin/cmake -P /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/CMake/GenerateMappings.cmake mappings.h.in mappings.h
+  DESC = Updating gamepad mappings from upstream repository
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/CMakeLists.txt
+# =============================================================================
+
+
+#############################################
+# Utility command for edit_cache
+
+build thirdparty/GLFW/docs/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/docs && /usr/bin/ccmake -S/home/plaidmrdeer/dev/GalaxyEngine -B/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build thirdparty/GLFW/docs/edit_cache: phony thirdparty/GLFW/docs/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build thirdparty/GLFW/docs/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/docs && /usr/bin/cmake --regenerate-during-build -S/home/plaidmrdeer/dev/GalaxyEngine -B/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build thirdparty/GLFW/docs/rebuild_cache: phony thirdparty/GLFW/docs/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build thirdparty/GLFW/docs/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build thirdparty/GLFW/docs/CMakeFiles/install.util: CUSTOM_COMMAND thirdparty/GLFW/docs/all
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/docs && /usr/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build thirdparty/GLFW/docs/install: phony thirdparty/GLFW/docs/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build thirdparty/GLFW/docs/CMakeFiles/install/local.util: CUSTOM_COMMAND thirdparty/GLFW/docs/all
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/docs && /usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build thirdparty/GLFW/docs/install/local: phony thirdparty/GLFW/docs/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build thirdparty/GLFW/docs/CMakeFiles/install/strip.util: CUSTOM_COMMAND thirdparty/GLFW/docs/all
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/docs && /usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build thirdparty/GLFW/docs/install/strip: phony thirdparty/GLFW/docs/CMakeFiles/install/strip.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /home/plaidmrdeer/dev/GalaxyEngine/CMakeLists.txt
+# =============================================================================
+
+
+#############################################
+# Utility command for edit_cache
+
+build thirdparty/glm/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/glm && /usr/bin/ccmake -S/home/plaidmrdeer/dev/GalaxyEngine -B/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build thirdparty/glm/edit_cache: phony thirdparty/glm/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build thirdparty/glm/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/glm && /usr/bin/cmake --regenerate-during-build -S/home/plaidmrdeer/dev/GalaxyEngine -B/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build thirdparty/glm/rebuild_cache: phony thirdparty/glm/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build thirdparty/glm/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build thirdparty/glm/CMakeFiles/install.util: CUSTOM_COMMAND thirdparty/glm/all
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/glm && /usr/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build thirdparty/glm/install: phony thirdparty/glm/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build thirdparty/glm/CMakeFiles/install/local.util: CUSTOM_COMMAND thirdparty/glm/all
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/glm && /usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build thirdparty/glm/install/local: phony thirdparty/glm/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build thirdparty/glm/CMakeFiles/install/strip.util: CUSTOM_COMMAND thirdparty/glm/all
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/glm && /usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build thirdparty/glm/install/strip: phony thirdparty/glm/CMakeFiles/install/strip.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/glm/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target glm
+
+
+#############################################
+# Order-only phony target for glm
+
+build cmake_object_order_depends_target_glm: phony || .
+
+build thirdparty/glm/glm/CMakeFiles/glm.dir/detail/glm.cpp.o: CXX_COMPILER__glm_unscanned_Release /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/glm/glm/detail/glm.cpp || cmake_object_order_depends_target_glm
+  DEP_FILE = thirdparty/glm/glm/CMakeFiles/glm.dir/detail/glm.cpp.o.d
+  FLAGS = -O3 -DNDEBUG -std=c++17 -fdiagnostics-color=always
+  INCLUDES = -I/home/plaidmrdeer/dev/GalaxyEngine/include -I/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/glm
+  OBJECT_DIR = thirdparty/glm/glm/CMakeFiles/glm.dir
+  OBJECT_FILE_DIR = thirdparty/glm/glm/CMakeFiles/glm.dir/detail
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target glm
+
+
+#############################################
+# Link the static library thirdparty/glm/glm/libglm.a
+
+build thirdparty/glm/glm/libglm.a: CXX_STATIC_LIBRARY_LINKER__glm_Release thirdparty/glm/glm/CMakeFiles/glm.dir/detail/glm.cpp.o
+  LANGUAGE_COMPILE_FLAGS = -O3 -DNDEBUG
+  OBJECT_DIR = thirdparty/glm/glm/CMakeFiles/glm.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = thirdparty/glm/glm/libglm.a
+  TARGET_PDB = glm.a.dbg
+
+
+#############################################
+# Utility command for edit_cache
+
+build thirdparty/glm/glm/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/glm/glm && /usr/bin/ccmake -S/home/plaidmrdeer/dev/GalaxyEngine -B/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build thirdparty/glm/glm/edit_cache: phony thirdparty/glm/glm/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build thirdparty/glm/glm/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/glm/glm && /usr/bin/cmake --regenerate-during-build -S/home/plaidmrdeer/dev/GalaxyEngine -B/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build thirdparty/glm/glm/rebuild_cache: phony thirdparty/glm/glm/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build thirdparty/glm/glm/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build thirdparty/glm/glm/CMakeFiles/install.util: CUSTOM_COMMAND thirdparty/glm/glm/all
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/glm/glm && /usr/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build thirdparty/glm/glm/install: phony thirdparty/glm/glm/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build thirdparty/glm/glm/CMakeFiles/install/local.util: CUSTOM_COMMAND thirdparty/glm/glm/all
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/glm/glm && /usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build thirdparty/glm/glm/install/local: phony thirdparty/glm/glm/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build thirdparty/glm/glm/CMakeFiles/install/strip.util: CUSTOM_COMMAND thirdparty/glm/glm/all
+  COMMAND = cd /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/glm/glm && /usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build thirdparty/glm/glm/install/strip: phony thirdparty/glm/glm/CMakeFiles/install/strip.util
+
 # =============================================================================
 # Target aliases.
+
+build glfw: phony thirdparty/GLFW/src/libglfw3.a
+
+build glm: phony thirdparty/glm/glm/libglm.a
+
+build libglfw3.a: phony thirdparty/GLFW/src/libglfw3.a
+
+build libglm.a: phony thirdparty/glm/glm/libglm.a
+
+build uninstall: phony thirdparty/GLFW/uninstall
+
+build update_mappings: phony thirdparty/GLFW/src/update_mappings
 
 # =============================================================================
 # Folder targets.
@@ -143,7 +1048,7 @@ build test/rebuild_cache: phony test/CMakeFiles/rebuild_cache.util
 #############################################
 # Folder: /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release
 
-build all: phony GalaxyEngine test/all
+build all: phony GalaxyEngine test/all thirdparty/GLFW/all thirdparty/glm/all
 
 # =============================================================================
 
@@ -153,20 +1058,55 @@ build all: phony GalaxyEngine test/all
 build test/all: phony
 
 # =============================================================================
+
+#############################################
+# Folder: /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW
+
+build thirdparty/GLFW/all: phony thirdparty/GLFW/src/all thirdparty/GLFW/docs/all
+
+# =============================================================================
+
+#############################################
+# Folder: /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/docs
+
+build thirdparty/GLFW/docs/all: phony
+
+# =============================================================================
+
+#############################################
+# Folder: /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/GLFW/src
+
+build thirdparty/GLFW/src/all: phony thirdparty/GLFW/src/libglfw3.a
+
+# =============================================================================
+
+#############################################
+# Folder: /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/glm
+
+build thirdparty/glm/all: phony thirdparty/glm/glm/all
+
+# =============================================================================
+
+#############################################
+# Folder: /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/thirdparty/glm/glm
+
+build thirdparty/glm/glm/all: phony thirdparty/glm/glm/libglm.a
+
+# =============================================================================
 # Built-in targets
 
 
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | /home/plaidmrdeer/dev/GalaxyEngine/CMakeLists.txt /home/plaidmrdeer/dev/GalaxyEngine/test/CMakeLists.txt /usr/share/cmake/Modules/CMakeCInformation.cmake /usr/share/cmake/Modules/CMakeCXXInformation.cmake /usr/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake/Modules/CMakeGenericSystem.cmake /usr/share/cmake/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake/Modules/CMakeLanguageInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake/Modules/Compiler/GNU-C.cmake /usr/share/cmake/Modules/Compiler/GNU-CXX.cmake /usr/share/cmake/Modules/Compiler/GNU.cmake /usr/share/cmake/Modules/Platform/Linux-GNU-C.cmake /usr/share/cmake/Modules/Platform/Linux-GNU-CXX.cmake /usr/share/cmake/Modules/Platform/Linux-GNU.cmake /usr/share/cmake/Modules/Platform/Linux-Initialize.cmake /usr/share/cmake/Modules/Platform/Linux.cmake /usr/share/cmake/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.30.3/CMakeCCompiler.cmake CMakeFiles/3.30.3/CMakeCXXCompiler.cmake CMakeFiles/3.30.3/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | /home/plaidmrdeer/dev/GalaxyEngine/CMakeLists.txt /home/plaidmrdeer/dev/GalaxyEngine/test/CMakeLists.txt /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/CMake/cmake_uninstall.cmake.in /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/CMake/glfw3.pc.in /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/CMake/glfw3Config.cmake.in /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/CMakeLists.txt /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/docs/CMakeLists.txt /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src/CMakeLists.txt /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/glm/CMakeLists.txt /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/glm/glm/CMakeLists.txt /usr/share/cmake/Modules/BasicConfigVersion-SameMajorVersion.cmake.in /usr/share/cmake/Modules/CMakeCInformation.cmake /usr/share/cmake/Modules/CMakeCXXInformation.cmake /usr/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake/Modules/CMakeDependentOption.cmake /usr/share/cmake/Modules/CMakeGenericSystem.cmake /usr/share/cmake/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake/Modules/CMakeLanguageInformation.cmake /usr/share/cmake/Modules/CMakePackageConfigHelpers.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake/Modules/CheckCSourceCompiles.cmake /usr/share/cmake/Modules/CheckFunctionExists.cmake /usr/share/cmake/Modules/CheckIncludeFile.cmake /usr/share/cmake/Modules/CheckIncludeFiles.cmake /usr/share/cmake/Modules/CheckLibraryExists.cmake /usr/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake/Modules/Compiler/GNU-C.cmake /usr/share/cmake/Modules/Compiler/GNU-CXX.cmake /usr/share/cmake/Modules/Compiler/GNU.cmake /usr/share/cmake/Modules/FindDoxygen.cmake /usr/share/cmake/Modules/FindFontconfig.cmake /usr/share/cmake/Modules/FindFreetype.cmake /usr/share/cmake/Modules/FindPackageHandleStandardArgs.cmake /usr/share/cmake/Modules/FindPackageMessage.cmake /usr/share/cmake/Modules/FindPkgConfig.cmake /usr/share/cmake/Modules/FindThreads.cmake /usr/share/cmake/Modules/FindX11.cmake /usr/share/cmake/Modules/GNUInstallDirs.cmake /usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake /usr/share/cmake/Modules/Platform/Linux-GNU-C.cmake /usr/share/cmake/Modules/Platform/Linux-GNU-CXX.cmake /usr/share/cmake/Modules/Platform/Linux-GNU.cmake /usr/share/cmake/Modules/Platform/Linux-Initialize.cmake /usr/share/cmake/Modules/Platform/Linux.cmake /usr/share/cmake/Modules/Platform/UnixPaths.cmake /usr/share/cmake/Modules/SelectLibraryConfigurations.cmake /usr/share/cmake/Modules/WriteBasicConfigVersionFile.cmake CMakeCache.txt CMakeFiles/3.30.3/CMakeCCompiler.cmake CMakeFiles/3.30.3/CMakeCXXCompiler.cmake CMakeFiles/3.30.3/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build /home/plaidmrdeer/dev/GalaxyEngine/CMakeLists.txt /home/plaidmrdeer/dev/GalaxyEngine/test/CMakeLists.txt /usr/share/cmake/Modules/CMakeCInformation.cmake /usr/share/cmake/Modules/CMakeCXXInformation.cmake /usr/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake/Modules/CMakeGenericSystem.cmake /usr/share/cmake/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake/Modules/CMakeLanguageInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake/Modules/Compiler/GNU-C.cmake /usr/share/cmake/Modules/Compiler/GNU-CXX.cmake /usr/share/cmake/Modules/Compiler/GNU.cmake /usr/share/cmake/Modules/Platform/Linux-GNU-C.cmake /usr/share/cmake/Modules/Platform/Linux-GNU-CXX.cmake /usr/share/cmake/Modules/Platform/Linux-GNU.cmake /usr/share/cmake/Modules/Platform/Linux-Initialize.cmake /usr/share/cmake/Modules/Platform/Linux.cmake /usr/share/cmake/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.30.3/CMakeCCompiler.cmake CMakeFiles/3.30.3/CMakeCXXCompiler.cmake CMakeFiles/3.30.3/CMakeSystem.cmake: phony
+build /home/plaidmrdeer/dev/GalaxyEngine/CMakeLists.txt /home/plaidmrdeer/dev/GalaxyEngine/test/CMakeLists.txt /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/CMake/cmake_uninstall.cmake.in /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/CMake/glfw3.pc.in /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/CMake/glfw3Config.cmake.in /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/CMakeLists.txt /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/docs/CMakeLists.txt /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/src/CMakeLists.txt /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/glm/CMakeLists.txt /home/plaidmrdeer/dev/GalaxyEngine/thirdparty/glm/glm/CMakeLists.txt /usr/share/cmake/Modules/BasicConfigVersion-SameMajorVersion.cmake.in /usr/share/cmake/Modules/CMakeCInformation.cmake /usr/share/cmake/Modules/CMakeCXXInformation.cmake /usr/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake/Modules/CMakeDependentOption.cmake /usr/share/cmake/Modules/CMakeGenericSystem.cmake /usr/share/cmake/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake/Modules/CMakeLanguageInformation.cmake /usr/share/cmake/Modules/CMakePackageConfigHelpers.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake/Modules/CheckCSourceCompiles.cmake /usr/share/cmake/Modules/CheckFunctionExists.cmake /usr/share/cmake/Modules/CheckIncludeFile.cmake /usr/share/cmake/Modules/CheckIncludeFiles.cmake /usr/share/cmake/Modules/CheckLibraryExists.cmake /usr/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake/Modules/Compiler/GNU-C.cmake /usr/share/cmake/Modules/Compiler/GNU-CXX.cmake /usr/share/cmake/Modules/Compiler/GNU.cmake /usr/share/cmake/Modules/FindDoxygen.cmake /usr/share/cmake/Modules/FindFontconfig.cmake /usr/share/cmake/Modules/FindFreetype.cmake /usr/share/cmake/Modules/FindPackageHandleStandardArgs.cmake /usr/share/cmake/Modules/FindPackageMessage.cmake /usr/share/cmake/Modules/FindPkgConfig.cmake /usr/share/cmake/Modules/FindThreads.cmake /usr/share/cmake/Modules/FindX11.cmake /usr/share/cmake/Modules/GNUInstallDirs.cmake /usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake /usr/share/cmake/Modules/Platform/Linux-GNU-C.cmake /usr/share/cmake/Modules/Platform/Linux-GNU-CXX.cmake /usr/share/cmake/Modules/Platform/Linux-GNU.cmake /usr/share/cmake/Modules/Platform/Linux-Initialize.cmake /usr/share/cmake/Modules/Platform/Linux.cmake /usr/share/cmake/Modules/Platform/UnixPaths.cmake /usr/share/cmake/Modules/SelectLibraryConfigurations.cmake /usr/share/cmake/Modules/WriteBasicConfigVersionFile.cmake CMakeCache.txt CMakeFiles/3.30.3/CMakeCCompiler.cmake CMakeFiles/3.30.3/CMakeCXXCompiler.cmake CMakeFiles/3.30.3/CMakeSystem.cmake: phony
 
 
 #############################################

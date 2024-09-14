@@ -496,3 +496,224 @@ events:
       Running the CXX compiler's linker: "/usr/bin/ld" "-v"
       GNU ld (GNU Binutils) 2.43.0
 ...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "/usr/share/cmake/Modules/FindThreads.cmake:97 (CHECK_C_SOURCE_COMPILES)"
+      - "/usr/share/cmake/Modules/FindThreads.cmake:163 (_threads_check_libc)"
+      - "thirdparty/GLFW/CMakeLists.txt:60 (find_package)"
+    checks:
+      - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
+    directories:
+      source: "/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/CMakeFiles/CMakeScratch/TryCompile-uJh8yX"
+      binary: "/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/CMakeFiles/CMakeScratch/TryCompile-uJh8yX"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/CMake/modules"
+    buildResult:
+      variable: "CMAKE_HAVE_LIBC_PTHREAD"
+      cached: true
+      stdout: |
+        Change Dir: '/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/CMakeFiles/CMakeScratch/TryCompile-uJh8yX'
+        
+        Run Build Command(s): /opt/clion/bin/ninja/linux/x64/ninja -v cmTC_183ad
+        [1/2] /usr/bin/cc -DCMAKE_HAVE_LIBC_PTHREAD  -fdiagnostics-color=always -o CMakeFiles/cmTC_183ad.dir/src.c.o -c /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/CMakeFiles/CMakeScratch/TryCompile-uJh8yX/src.c
+        [2/2] : && /usr/bin/cc   CMakeFiles/cmTC_183ad.dir/src.c.o -o cmTC_183ad   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CheckFunctionExists.cmake:86 (try_compile)"
+      - "thirdparty/GLFW/src/CMakeLists.txt:69 (check_function_exists)"
+    checks:
+      - "Looking for memfd_create"
+    directories:
+      source: "/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/CMakeFiles/CMakeScratch/TryCompile-MqEwb1"
+      binary: "/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/CMakeFiles/CMakeScratch/TryCompile-MqEwb1"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/CMake/modules"
+    buildResult:
+      variable: "HAVE_MEMFD_CREATE"
+      cached: true
+      stdout: |
+        Change Dir: '/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/CMakeFiles/CMakeScratch/TryCompile-MqEwb1'
+        
+        Run Build Command(s): /opt/clion/bin/ninja/linux/x64/ninja -v cmTC_20a06
+        [1/2] /usr/bin/cc   -DCHECK_FUNCTION_EXISTS=memfd_create -fdiagnostics-color=always -o CMakeFiles/cmTC_20a06.dir/CheckFunctionExists.c.o -c /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/CMakeFiles/CMakeScratch/TryCompile-MqEwb1/CheckFunctionExists.c
+        [2/2] : && /usr/bin/cc -DCHECK_FUNCTION_EXISTS=memfd_create  CMakeFiles/cmTC_20a06.dir/CheckFunctionExists.c.o -o cmTC_20a06   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CheckLibraryExists.cmake:69 (try_compile)"
+      - "/usr/share/cmake/Modules/FindX11.cmake:693 (check_library_exists)"
+      - "thirdparty/GLFW/src/CMakeLists.txt:182 (find_package)"
+    checks:
+      - "Looking for XOpenDisplay in /usr/lib/libX11.so;/usr/lib/libXext.so"
+    directories:
+      source: "/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/CMakeFiles/CMakeScratch/TryCompile-2QGteF"
+      binary: "/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/CMakeFiles/CMakeScratch/TryCompile-2QGteF"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/CMake/modules"
+    buildResult:
+      variable: "X11_LIB_X11_SOLO"
+      cached: true
+      stdout: |
+        Change Dir: '/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/CMakeFiles/CMakeScratch/TryCompile-2QGteF'
+        
+        Run Build Command(s): /opt/clion/bin/ninja/linux/x64/ninja -v cmTC_ff754
+        [1/2] /usr/bin/cc   -DCHECK_FUNCTION_EXISTS=XOpenDisplay -fdiagnostics-color=always -o CMakeFiles/cmTC_ff754.dir/CheckFunctionExists.c.o -c /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/CMakeFiles/CMakeScratch/TryCompile-2QGteF/CheckFunctionExists.c
+        [2/2] : && /usr/bin/cc -DCHECK_FUNCTION_EXISTS=XOpenDisplay  CMakeFiles/cmTC_ff754.dir/CheckFunctionExists.c.o -o cmTC_ff754  /usr/lib/libX11.so  /usr/lib/libXext.so && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CheckFunctionExists.cmake:86 (try_compile)"
+      - "/usr/share/cmake/Modules/FindX11.cmake:708 (check_function_exists)"
+      - "thirdparty/GLFW/src/CMakeLists.txt:182 (find_package)"
+    checks:
+      - "Looking for gethostbyname"
+    directories:
+      source: "/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/CMakeFiles/CMakeScratch/TryCompile-ZeLmcI"
+      binary: "/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/CMakeFiles/CMakeScratch/TryCompile-ZeLmcI"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/CMake/modules"
+    buildResult:
+      variable: "CMAKE_HAVE_GETHOSTBYNAME"
+      cached: true
+      stdout: |
+        Change Dir: '/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/CMakeFiles/CMakeScratch/TryCompile-ZeLmcI'
+        
+        Run Build Command(s): /opt/clion/bin/ninja/linux/x64/ninja -v cmTC_973be
+        [1/2] /usr/bin/cc   -DCHECK_FUNCTION_EXISTS=gethostbyname -fdiagnostics-color=always -o CMakeFiles/cmTC_973be.dir/CheckFunctionExists.c.o -c /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/CMakeFiles/CMakeScratch/TryCompile-ZeLmcI/CheckFunctionExists.c
+        [2/2] : && /usr/bin/cc -DCHECK_FUNCTION_EXISTS=gethostbyname  CMakeFiles/cmTC_973be.dir/CheckFunctionExists.c.o -o cmTC_973be   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CheckFunctionExists.cmake:86 (try_compile)"
+      - "/usr/share/cmake/Modules/FindX11.cmake:722 (check_function_exists)"
+      - "thirdparty/GLFW/src/CMakeLists.txt:182 (find_package)"
+    checks:
+      - "Looking for connect"
+    directories:
+      source: "/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/CMakeFiles/CMakeScratch/TryCompile-woKTi6"
+      binary: "/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/CMakeFiles/CMakeScratch/TryCompile-woKTi6"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/CMake/modules"
+    buildResult:
+      variable: "CMAKE_HAVE_CONNECT"
+      cached: true
+      stdout: |
+        Change Dir: '/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/CMakeFiles/CMakeScratch/TryCompile-woKTi6'
+        
+        Run Build Command(s): /opt/clion/bin/ninja/linux/x64/ninja -v cmTC_530c4
+        [1/2] /usr/bin/cc   -DCHECK_FUNCTION_EXISTS=connect -fdiagnostics-color=always -o CMakeFiles/cmTC_530c4.dir/CheckFunctionExists.c.o -c /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/CMakeFiles/CMakeScratch/TryCompile-woKTi6/CheckFunctionExists.c
+        [2/2] : && /usr/bin/cc -DCHECK_FUNCTION_EXISTS=connect  CMakeFiles/cmTC_530c4.dir/CheckFunctionExists.c.o -o cmTC_530c4   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CheckFunctionExists.cmake:86 (try_compile)"
+      - "/usr/share/cmake/Modules/FindX11.cmake:731 (check_function_exists)"
+      - "thirdparty/GLFW/src/CMakeLists.txt:182 (find_package)"
+    checks:
+      - "Looking for remove"
+    directories:
+      source: "/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/CMakeFiles/CMakeScratch/TryCompile-ra5nAp"
+      binary: "/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/CMakeFiles/CMakeScratch/TryCompile-ra5nAp"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/CMake/modules"
+    buildResult:
+      variable: "CMAKE_HAVE_REMOVE"
+      cached: true
+      stdout: |
+        Change Dir: '/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/CMakeFiles/CMakeScratch/TryCompile-ra5nAp'
+        
+        Run Build Command(s): /opt/clion/bin/ninja/linux/x64/ninja -v cmTC_58370
+        [1/2] /usr/bin/cc   -DCHECK_FUNCTION_EXISTS=remove -fdiagnostics-color=always -o CMakeFiles/cmTC_58370.dir/CheckFunctionExists.c.o -c /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/CMakeFiles/CMakeScratch/TryCompile-ra5nAp/CheckFunctionExists.c
+        [2/2] : && /usr/bin/cc -DCHECK_FUNCTION_EXISTS=remove  CMakeFiles/cmTC_58370.dir/CheckFunctionExists.c.o -o cmTC_58370   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CheckFunctionExists.cmake:86 (try_compile)"
+      - "/usr/share/cmake/Modules/FindX11.cmake:740 (check_function_exists)"
+      - "thirdparty/GLFW/src/CMakeLists.txt:182 (find_package)"
+    checks:
+      - "Looking for shmat"
+    directories:
+      source: "/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/CMakeFiles/CMakeScratch/TryCompile-s7nr5d"
+      binary: "/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/CMakeFiles/CMakeScratch/TryCompile-s7nr5d"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/CMake/modules"
+    buildResult:
+      variable: "CMAKE_HAVE_SHMAT"
+      cached: true
+      stdout: |
+        Change Dir: '/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/CMakeFiles/CMakeScratch/TryCompile-s7nr5d'
+        
+        Run Build Command(s): /opt/clion/bin/ninja/linux/x64/ninja -v cmTC_555e0
+        [1/2] /usr/bin/cc   -DCHECK_FUNCTION_EXISTS=shmat -fdiagnostics-color=always -o CMakeFiles/cmTC_555e0.dir/CheckFunctionExists.c.o -c /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/CMakeFiles/CMakeScratch/TryCompile-s7nr5d/CheckFunctionExists.c
+        [2/2] : && /usr/bin/cc -DCHECK_FUNCTION_EXISTS=shmat  CMakeFiles/cmTC_555e0.dir/CheckFunctionExists.c.o -o cmTC_555e0   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CheckLibraryExists.cmake:69 (try_compile)"
+      - "/usr/share/cmake/Modules/FindX11.cmake:750 (check_library_exists)"
+      - "thirdparty/GLFW/src/CMakeLists.txt:182 (find_package)"
+    checks:
+      - "Looking for IceConnectionNumber in ICE"
+    directories:
+      source: "/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/CMakeFiles/CMakeScratch/TryCompile-Fj5lhJ"
+      binary: "/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/CMakeFiles/CMakeScratch/TryCompile-Fj5lhJ"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/plaidmrdeer/dev/GalaxyEngine/thirdparty/GLFW/CMake/modules"
+    buildResult:
+      variable: "CMAKE_LIB_ICE_HAS_ICECONNECTIONNUMBER"
+      cached: true
+      stdout: |
+        Change Dir: '/home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/CMakeFiles/CMakeScratch/TryCompile-Fj5lhJ'
+        
+        Run Build Command(s): /opt/clion/bin/ninja/linux/x64/ninja -v cmTC_67fa1
+        [1/2] /usr/bin/cc   -DCHECK_FUNCTION_EXISTS=IceConnectionNumber -fdiagnostics-color=always -o CMakeFiles/cmTC_67fa1.dir/CheckFunctionExists.c.o -c /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/CMakeFiles/CMakeScratch/TryCompile-Fj5lhJ/CheckFunctionExists.c
+        [2/2] : && /usr/bin/cc -DCHECK_FUNCTION_EXISTS=IceConnectionNumber  CMakeFiles/cmTC_67fa1.dir/CheckFunctionExists.c.o -o cmTC_67fa1  -lICE && :
+        
+      exitCode: 0
+...
