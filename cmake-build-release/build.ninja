@@ -49,9 +49,17 @@ cmake_ninja_workdir = /home/plaidmrdeer/dev/GalaxyEngine/cmake-build-release/
 
 build cmake_object_order_depends_target_GalaxyEngine: phony || .
 
+build CMakeFiles/GalaxyEngine.dir/src/Engine.cpp.o: CXX_COMPILER__GalaxyEngine_unscanned_Release /home/plaidmrdeer/dev/GalaxyEngine/src/Engine.cpp || cmake_object_order_depends_target_GalaxyEngine
+  DEP_FILE = CMakeFiles/GalaxyEngine.dir/src/Engine.cpp.o.d
+  FLAGS = -O3 -DNDEBUG -std=gnu++17 -fdiagnostics-color=always
+  INCLUDES = -I/home/plaidmrdeer/dev/GalaxyEngine/include
+  OBJECT_DIR = CMakeFiles/GalaxyEngine.dir
+  OBJECT_FILE_DIR = CMakeFiles/GalaxyEngine.dir/src
+
 build CMakeFiles/GalaxyEngine.dir/src/main.cpp.o: CXX_COMPILER__GalaxyEngine_unscanned_Release /home/plaidmrdeer/dev/GalaxyEngine/src/main.cpp || cmake_object_order_depends_target_GalaxyEngine
   DEP_FILE = CMakeFiles/GalaxyEngine.dir/src/main.cpp.o.d
   FLAGS = -O3 -DNDEBUG -std=gnu++17 -fdiagnostics-color=always
+  INCLUDES = -I/home/plaidmrdeer/dev/GalaxyEngine/include
   OBJECT_DIR = CMakeFiles/GalaxyEngine.dir
   OBJECT_FILE_DIR = CMakeFiles/GalaxyEngine.dir/src
 
@@ -63,7 +71,7 @@ build CMakeFiles/GalaxyEngine.dir/src/main.cpp.o: CXX_COMPILER__GalaxyEngine_uns
 #############################################
 # Link the executable GalaxyEngine
 
-build GalaxyEngine: CXX_EXECUTABLE_LINKER__GalaxyEngine_Release CMakeFiles/GalaxyEngine.dir/src/main.cpp.o
+build GalaxyEngine: CXX_EXECUTABLE_LINKER__GalaxyEngine_Release CMakeFiles/GalaxyEngine.dir/src/Engine.cpp.o CMakeFiles/GalaxyEngine.dir/src/main.cpp.o
   FLAGS = -O3 -DNDEBUG
   OBJECT_DIR = CMakeFiles/GalaxyEngine.dir
   POST_BUILD = :

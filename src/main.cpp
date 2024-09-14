@@ -1,7 +1,11 @@
-#include <iostream>
+//
+// Created by plaidmrdeer on 2024/9/14.
+//
+#include <Engine.h>
+
 
 int main()
 {
-    std::cout << "Hello, World!" << std::endl;
-    return 0;
+    Engine engine{};
+    engine.run();
 }
