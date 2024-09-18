@@ -6,7 +6,11 @@
 
 void Engine::run()
 {
-
+    init();
+    initVulkan();
+    initWindow();
+    loop();
+    cleanup();
 }
 
 void Engine::init()

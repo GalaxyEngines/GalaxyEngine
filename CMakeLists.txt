@@ -11,5 +11,4 @@ add_subdirectory(test)
 add_subdirectory(thirdparty/GLFW)
 add_subdirectory(thirdparty/glm)
 
-add_executable(GalaxyEngine ${src}
-        src/ui/a.cpp)
+add_executable(GalaxyEngine ${src})
