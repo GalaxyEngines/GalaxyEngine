@@ -11,16 +11,4 @@ TaskScheduler多线程任务
 FiberManager纤
 AsyncLoader异步加载
 
-这是模型管理器
-// ModuleInterface.h
 
-#pragma once
-#include <string>
-
-class ModuleInterface {
-public:
-    virtual ~ModuleInterface() = default;
-    virtual void Initialize() = 0;
-    virtual void Cleanup() = 0;
-    virtual void OnEvent(const std::string& event) = 0; // 接口
-};
