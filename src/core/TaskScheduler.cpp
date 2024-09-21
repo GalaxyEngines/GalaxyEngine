@@ -1,38 +1,87 @@
-// TaskScheduler.h
+// TaskScheduler.cpp
 
-#pragma once
+#include "TaskScheduler.h"
 
-#include <functional>
-#include <future>
-#include <queue>
-#include <deque>
-#include <thread>
-#include <vector>
-#include <mutex>
-#include <condition_variable>
-#include <atomic>
-#include <memory>
+TaskScheduler::TaskScheduler(size_t threadCount) {
+    for (size_t i = 0; i < threadCount; ++i) {
+        auto data = std::make_unique<ThreadData>();
+        data->worker = std::thread(&TaskScheduler::WorkerThread, this, data.get());
+        threads.push_back(std::move(data));
+    }
+}
 
-class TaskScheduler {
-public:
-    TaskScheduler(size_t threadCount = std::thread::hardware_concurrency());
-    ~TaskScheduler();
+TaskScheduler::~TaskScheduler() {
+    stop.store(true);
+    for (auto& data : threads) {
+        data->stopFlag = true;
+        data->condition.notify_all();
+    }
 
-    template<typename Func, typename... Args>
-    auto SubmitTask(Func&& func, Args&&... args) -> std::future<decltype(func(args...))>;
+    for (auto& data : threads) {
+        if (data->worker.joinable()) {
+            data->worker.join();
+        }
+    }
+}
 
-private:
-    struct ThreadData {
-        std::thread worker;
-        std::deque<std::function<void()>> taskQueue;
-        std::mutex queueMutex;
-        std::condition_variable condition;
-        bool stopFlag = false;
-    };
+template<typename Func, typename... Args>
+auto TaskScheduler::SubmitTask(Func&& func, Args&&... args) -> std::future<decltype(func(args...))> {
+    using ReturnType = decltype(func(args...));
 
-    std::vector<std::unique_ptr<ThreadData>> threads;
-    std::atomic<bool> stop{ false };
+    auto task = std::make_shared<std::packaged_task<ReturnType()>>(
+        std::bind(std::forward<Func>(func), std::forward<Args>(args)...)
+    );
+    std::future<ReturnType> result = task->get_future();
 
-    void WorkerThread(ThreadData* data);
-    bool StealTask(std::function<void()>& task);
-};
+    size_t index = std::rand() % threads.size();
+    {
+        std::lock_guard<std::mutex> lock(threads[index]->queueMutex);
+        threads[index]->taskQueue.push_back([task]() { (*task)(); });
+    }
+    threads[index]->condition.notify_one();
+
+    return result;
+}
+
+void TaskScheduler::WorkerThread(ThreadData* data) {
+    while (!data->stopFlag) {
+        std::function<void()> task;
+        {
+            std::unique_lock<std::mutex> lock(data->queueMutex);
+            data->condition.wait(lock, [data, this] {
+                return data->stopFlag || !data->taskQueue.empty() || stop.load();
+            });
+
+            if (data->stopFlag && data->taskQueue.empty()) {
+                return;
+            }
+
+            if (!data->taskQueue.empty()) {
+                task = std::move(data->taskQueue.front());
+                data->taskQueue.pop_front();
+            }
+        }
+
+        if (task) {
+            task();
+        } else if (StealTask(task)) {
+            task();
+        }
+    }
+}
+
+bool TaskScheduler::StealTask(std::function<void()>& task) {
+    for (auto& otherThread : threads) {
+        if (otherThread->stopFlag) {
+            continue;
+        }
+
+        std::lock_guard<std::mutex> lock(otherThread->queueMutex);
+        if (!otherThread->taskQueue.empty()) {
+            task = std::move(otherThread->taskQueue.back());
+            otherThread->taskQueue.pop_back();
+            return true;
+        }
+    }
+    return false;
+}
