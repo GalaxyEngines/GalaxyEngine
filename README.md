@@ -1,5 +1,5 @@
 一款轻量好用的游戏引擎
-![Image text](https://github.com/GalaxyEngines/GalaxyEngine/blob/main/LOGO/logo.jpeg)
+![Image text](https://github.com/GalaxyEngines/GalaxyEngine/blob/main/LOGO/icon.jpeg)
 
 设计 
 RENDERER
