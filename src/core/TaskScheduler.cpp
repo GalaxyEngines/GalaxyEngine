@@ -19,11 +19,11 @@ public:
 
     void Initialize() override {
         unsigned int threadCount = std::thread::hardware_concurrency();
-        if (threadCount == 0) threadCount = 4;
+        if (threadCount == 0) threadCount = 4; // 默认使用 4 个线程
         for (unsigned int i = 0; i < threadCount; ++i) {
             workers.emplace_back(&TaskSchedulerModule::WorkerThreadFunc, this);
         }
-        std::cout << "TaskScheduler Initialized with " << threadCount << " threads." << std::endl;
+        std::cout << "任务调度器初始化 " << threadCount << " threads." << std::endl;
     }
 
     void Cleanup() override {
@@ -51,11 +51,11 @@ public:
         auto parsedTask = ParseTaskData(task.GetData());
         EnqueueTask([parsedTask]() {
             // 执行解析后的任务逻辑
-            std::cout << "Executing parsed task: " << parsedTask << std::endl;
+            std::cout << "正在执行解析任务: " << parsedTask << std::endl;
         });
     }
 
-    // 提供给UI的API接口
+    // 提供给UI的API接口，提交任务并返回 future 以获取结果
     template<typename Func, typename... Args>
     auto ScheduleTask(Func&& func, Args&&... args) -> std::future<typename std::result_of<Func(Args...)>::type> {
         using return_type = typename std::result_of<Func(Args...)>::type;
@@ -76,19 +76,20 @@ public:
 private:
     std::vector<std::thread> workers;
     std::queue<std::function<void()>> tasks;
-
     std::mutex queueMutex;
     std::condition_variable cv;
     std::atomic<bool> stop;
 
+    // 将任务加入队列
     void EnqueueTask(std::function<void()> func) {
         {
             std::lock_guard<std::mutex> lock(queueMutex);
             tasks.emplace(func);
         }
-        cv.notify_one();
+        cv.notify_one(); // 唤醒一个等待的线程来处理任务
     }
 
+    // 工作线程的主循环函数
     void WorkerThreadFunc() {
         while (true) {
             std::function<void()> taskFunc;
@@ -98,23 +99,34 @@ private:
                 if (stop.load() && tasks.empty()) {
                     break;
                 }
-                taskFunc = std::move(tasks.front());
-                tasks.pop();
+                if (!tasks.empty()) {
+                    taskFunc = std::move(tasks.front());
+                    tasks.pop();
+                }
             }
-            taskFunc();
+            if (taskFunc) {
+                taskFunc(); // 执行任务
+            }
         }
     }
 
-    void StopScheduler() {
-        std::cout << "fucking TaskScheduler..." << std::endl;
-        stop = true;
-        cv.notify_all();
+    // 解析 JSON 格式的任务数据
+    std::string ParseTaskData(const std::string& data) {
+        try {
+            json parsedData = json::parse(data);
+            std::string taskType = parsedData["task_type"];
+            return taskType; // 返回任务类型作为解析结果
+        } catch (const json::parse_error& e) {
+            std::cerr << "JSON parse 炸了: " << e.what() << std::endl;
+            return "invalid";
+        }
     }
 
-    std::string ParseTaskData(const std::string& data) {
-        json parsedData = json::parse(data);
-        std::string taskType = parsedData["task_type"];
-        return taskType; // 返回任务类型作为解析结果
+    // 停止任务调度器
+    void StopScheduler() {
+        std::cout << "Fucking down TaskScheduler..." << std::endl;
+        stop = true;
+        cv.notify_all();
     }
 };
 
