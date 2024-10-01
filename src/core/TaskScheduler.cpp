@@ -8,7 +8,9 @@
 #include <future>
 #include <atomic>
 #include <iostream>
+#include <nlohmann/json.hpp> // 使用数据格式（JSON）
 
+using json = nlohmann::json;
 using namespace MyEngine;
 
 class TaskSchedulerModule : public ModuleInterface {
@@ -21,6 +23,7 @@ public:
         for (unsigned int i = 0; i < threadCount; ++i) {
             workers.emplace_back(&TaskSchedulerModule::WorkerThreadFunc, this);
         }
+        std::cout << "TaskScheduler Initialized with " << threadCount << " threads." << std::endl;
     }
 
     void Cleanup() override {
@@ -34,16 +37,21 @@ public:
                 worker.join();
             }
         }
+        std::cout << "TaskScheduler Fucked up." << std::endl;
     }
 
     void OnEvent(const std::string& event) override {
-        // 处理事件（还没做）
+        std::cout << "Received event: " << event << std::endl;
+        if (event == "shutdown") {
+            StopScheduler();
+        }
     }
 
     void ProcessTask(const Task& task) override {
-        // 根据任务类型进行调度
-        EnqueueTask([task]() {
-            // 执行任务逻辑
+        auto parsedTask = ParseTaskData(task.GetData());
+        EnqueueTask([parsedTask]() {
+            // 执行解析后的任务逻辑
+            std::cout << "Executing parsed task: " << parsedTask << std::endl;
         });
     }
 
@@ -96,9 +104,20 @@ private:
             taskFunc();
         }
     }
+
+    void StopScheduler() {
+        std::cout << "fucking TaskScheduler..." << std::endl;
+        stop = true;
+        cv.notify_all();
+    }
+
+    std::string ParseTaskData(const std::string& data) {
+        json parsedData = json::parse(data);
+        std::string taskType = parsedData["task_type"];
+        return taskType; // 返回任务类型作为解析结果
+    }
 };
 
 extern "C" ModuleInterface* CreateModule() {
     return new TaskSchedulerModule();
 }
-
