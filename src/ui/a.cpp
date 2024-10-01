@@ -27,7 +27,6 @@ bool showConsoleWindow = true;
 bool showResourceBrowserWindow = true;
 bool showPerformanceWindow = true;
 std::string currentFilePath;
-
 // 性能数据
 float cpuUsage = 0.0f;
 float gpuUsage = 0.0f;
