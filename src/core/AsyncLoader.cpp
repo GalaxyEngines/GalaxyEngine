@@ -18,8 +18,8 @@ public:
     AsyncLoaderModule() : stopLoading(false) {}
 
     void Initialize() override {
-        unsigned int threadCount = std::thread::hardware_concurrency();
-        if (threadCount == 0) threadCount = 4;
+        unsigned int threadCount = std::thread::hardware_concurrency();//开始多线程加载
+        if (threadCount == 0) threadCount = 4;//默认这玩意四个
         for (unsigned int i = 0; i < threadCount; ++i) {
             loaderThreads.emplace_back(&AsyncLoaderModule::LoaderThreadFunc, this);
         }
