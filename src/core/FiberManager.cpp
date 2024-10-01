@@ -1,5 +1,3 @@
-// src/core/FiberManager.cpp
-
 #include "ModuleInterface.h"
 #include <functional>
 #include <vector>
