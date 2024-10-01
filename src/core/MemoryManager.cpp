@@ -4,8 +4,6 @@
 #include <iostream>
 #include <memory>
 
-using namespace MyEngine;
-
 class MemoryPool {
 public:
     MemoryPool(size_t blockSize, size_t initialBlocks = 1024)
@@ -22,7 +20,7 @@ public:
     void* Allocate() {
         std::lock_guard<std::mutex> lock(mutex);
         if (freeBlocks.empty()) {
-            ExpandPool(blocks.size());  // 双倍扩展内存池大小
+            ExpandPool(blocks.size());
         }
         void* ptr = freeBlocks.back();
         freeBlocks.pop_back();
@@ -71,7 +69,6 @@ public:
         auto [operation, size, pointer] = ParseMemoryTaskData(task.GetData());
         if (operation == "allocate") {
             void* allocatedPtr = AllocateMemory(size);
-            // 返回给请求者处理或存储指针
             std::cout << "Allocated memory of size: " << size << std::endl;
         } else if (operation == "free") {
             FreeMemory(pointer, size);
@@ -79,13 +76,11 @@ public:
         }
     }
 
-    // 提供给UI的API接口
     void* AllocateMemory(size_t size) {
         auto pool = GetPool(size);
         if (pool) {
             return pool->Allocate();
         } else {
-            std::cout << "Allocating memory without pool for size: " << size << std::endl;
             return ::operator new(size);
         }
     }
@@ -95,7 +90,6 @@ public:
         if (pool) {
             pool->Deallocate(ptr);
         } else {
-            std::cout << "Freeing memory without pool for size: " << size << std::endl;
             ::operator delete(ptr);
         }
     }
@@ -113,10 +107,8 @@ private:
     }
 
     std::tuple<std::string, size_t, void*> ParseMemoryTaskData(const std::string& data) {
-        // 更好的数据格式使用JSON或类似的序列化方式,这块以后写吧
-        // 模拟解析逻辑
-        std::string operation = "allocate"; // 假设操作来自数据
-        size_t size = 256; // 假设大小来自数据
+        std::string operation = "allocate";
+        size_t size = 256;
         void* pointer = nullptr;
         return {operation, size, pointer};
     }
