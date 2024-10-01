@@ -9,7 +9,9 @@
 #include <atomic>
 #include <iostream>
 #include <boost/context/fiber.hpp>
+#include <nlohmann/json.hpp> // 用于解析更好的数据格式（JSON）
 
+using json = nlohmann::json;
 using namespace MyEngine;
 
 class FiberManagerModule : public ModuleInterface {
@@ -18,6 +20,7 @@ public:
 
     void Initialize() override {
         schedulerThread = std::thread(&FiberManagerModule::SchedulerThreadFunc, this);
+        std::cout << "FiberManagerModule 上号了！." << std::endl;
     }
 
     void Cleanup() override {
@@ -29,17 +32,21 @@ public:
         if (schedulerThread.joinable()) {
             schedulerThread.join();
         }
+        std::cout << "FiberManagerModule Fucked up." << std::endl;
     }
 
     void OnEvent(const std::string& event) override {
-        // 处理事件（没做）
+        std::cout << "FiberManager received event: " << event << std::endl;
+        if (event == "pause") {
+            PauseFibers();
+        } else if (event == "resume") {
+            ResumeFibers();
+        }
     }
 
     void ProcessTask(const Task& task) override {
-        if (task.GetType() == Task::TaskType::RunFiber) {
-            auto fiberFunc = GetFiberFunction(task.GetData());
-            EnqueueFiberTask(fiberFunc);
-        }
+        auto fiberFunc = ParseFiberTaskData(task.GetData());
+        EnqueueFiberTask(fiberFunc);
     }
 
     // 提供给UI的API接口
@@ -87,10 +94,28 @@ private:
         }
     }
 
-    std::function<void()> GetFiberFunction(const std::string& data) {
-        // 根据数据获取Fiber函数
+    void PauseFibers() {
+        std::cout << "fucking all fibers..." << std::endl;
+        // 暂停所有fiber的逻辑
+    }
+
+    void ResumeFibers() {
+        std::cout << "fuhuo all fibers..." << std::endl;
+        // 恢复所有fiber的逻辑
+    }
+
+    std::function<void()> ParseFiberTaskData(const std::string& data) {
+        json parsedData = json::parse(data);
+        std::string action = parsedData["action"];
+        if (action == "complex_computation") {
+            return []() {
+                std::cout << "光纤复杂计算..." << std::endl;
+                // 在这里实现fiber的实际功能，这地方需要计算的
+                Fiber::yield(); // 切换上下文，可以调用yield
+            };
+        }
         return []() {
-            // Fiber的实际功能，我还没做
+            std::cout << "Running default fiber task..." << std::endl;
         };
     }
 };
