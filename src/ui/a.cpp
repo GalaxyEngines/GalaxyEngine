@@ -1,4 +1,4 @@
-#include "imgui.h" 
+#include "imgui.h"
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_vulkan.h"
 #include <GLFW/glfw3.h>
@@ -9,7 +9,8 @@
 #include <thread>
 #include <cstring>
 #include <windows.h>
-#include "TaskSchedulerModule.h"  // 引入任务调度模块
+#include "TaskSchedulerModule.h"
+#include "VulkanBase.h"
 #include "ModuleInterface.h"
 
 // 定义游戏对象
@@ -33,56 +34,47 @@ float cpuUsage = 0.0f;
 float gpuUsage = 0.0f;
 int fps = 0;
 
+// Vulkan 渲染相关全局变量
+VulkanBase* vulkanBase;
+VkCommandBuffer sceneCommandBuffer;
+
 // 日志内容
 std::vector<std::string> logMessages;
 
-// 自定义 UI 样式和颜色
+// 设定UI字体和风格
+void SetupImGuiFonts() {
+    ImGuiIO& io = ImGui::GetIO();
+    io.Fonts->AddFontFromFileTTF("fonts/Roboto-Regular.ttf", 16.0f);  // 使用 Roboto 字体
+}
+
 void SetupImGuiStyle() {
     ImGuiStyle& style = ImGui::GetStyle();
-    style.FrameRounding = 5.0f; // 让按钮和框架圆润
-    style.Colors[ImGuiCol_WindowBg] = ImVec4(0.15f, 0.15f, 0.18f, 1.0f); // 暗黑模式背景
-    style.Colors[ImGuiCol_Button] = ImVec4(0.2f, 0.3f, 0.4f, 1.0f); // 关键按钮使用亮色
-    style.Colors[ImGuiCol_ButtonHovered] = ImVec4(0.3f, 0.45f, 0.6f, 1.0f); // 按钮悬停时颜色
-    style.Colors[ImGuiCol_ButtonActive] = ImVec4(0.2f, 0.3f, 0.5f, 1.0f); // 按钮激活时颜色
-    style.Colors[ImGuiCol_Text] = ImVec4(0.8f, 0.8f, 0.83f, 1.0f); // 文本颜色为柔和的白色
+    style.FrameRounding = 5.0f;
+    style.Colors[ImGuiCol_WindowBg] = ImVec4(0.12f, 0.12f, 0.15f, 1.0f);  // 更柔和的深色背景
+    style.Colors[ImGuiCol_Button] = ImVec4(0.2f, 0.35f, 0.45f, 1.0f);  // 亮色按钮
+    style.Colors[ImGuiCol_ButtonHovered] = ImVec4(0.3f, 0.45f, 0.6f, 1.0f);  // 悬停颜色
+    style.Colors[ImGuiCol_ButtonActive] = ImVec4(0.25f, 0.4f, 0.55f, 1.0f);  // 按钮激活时颜色
+    style.Colors[ImGuiCol_Text] = ImVec4(0.85f, 0.85f, 0.88f, 1.0f);  // 柔和的白色文本
+    style.WindowRounding = 6.0f;  // 圆角边框
 }
 
-// 更新性能数据
-void UpdatePerformanceData(TaskSchedulerModule& taskScheduler, VkDevice device, VkQueue queue, VkCommandBuffer commandBuffer) {
-    taskScheduler.ScheduleTask([device, queue, commandBuffer]() {
-        UpdateCPUUsage();
-        UpdateGPUUsage(device, queue, commandBuffer);
-    });
+// 实现窗口拖拽、调整大小
+void BeginDocking() {
+    ImGui::DockSpaceOverViewport(ImGui::GetMainViewport());
 }
 
-// 文件保存
-void SaveFile(const std::string& filePath) {
-    std::ofstream outFile(filePath);
-    if (outFile) {
-        outFile << "对象名称: " << currentObject.name << "\n";
-        outFile << "位置: " << currentObject.position[0] << ", "
-                << currentObject.position[1] << ", "
-                << currentObject.position[2] << "\n";
-        outFile << "旋转: " << currentObject.rotation[0] << ", "
-                << currentObject.rotation[1] << ", "
-                << currentObject.rotation[2] << "\n";
-        outFile << "缩放: " << currentObject.scale[0] << ", "
-                << currentObject.scale[1] << ", "
-                << currentObject.scale[2] << "\n";
-        std::cout << "文件已保存: " << filePath << std::endl;
-        logMessages.push_back("文件已保存: " + filePath);
-    } else {
-        std::cerr << "保存文件失败！" << std::endl;
-        logMessages.push_back("保存文件失败！");
-    }
-}
-
-// 渲染场景窗口
+// 渲染场景窗口 (显示 Vulkan 渲染的结果)
 void RenderSceneWindow() {
     if (!showSceneWindow) return;
+    
     ImGui::Begin("场景视图", &showSceneWindow);
-    ImGui::Text("场景视图在这里");
-    // TODO: 在这里实现场景的实时3D渲染
+
+    // 自适应调整场景窗口大小
+    ImVec2 windowSize = ImGui::GetContentRegionAvail();
+    
+    // 显示 Vulkan 渲染的图像
+    ImGui::Image((void*)(intptr_t)vulkanBase->GetRenderedImage(), windowSize);
+
     ImGui::End();
 }
 
@@ -171,8 +163,8 @@ int main() {
 
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
-    SetupImGuiStyle();  // 应用自定义的UI样式
-    ImGui::StyleColorsDark();
+    SetupImGuiFonts();  // 设置自定义字体
+    SetupImGuiStyle();  // 设置UI样式
     ImGui_ImplGlfw_InitForVulkan(window, true);
 
     VkInstance instance;
@@ -182,42 +174,41 @@ int main() {
     VkRenderPass renderPass;
     VkDescriptorPool descriptorPool;
 
-    ImGui_ImplVulkan_InitInfo vulkanInitInfo = {};
-    SetupVulkan(vulkanInitInfo, instance, device, physicalDevice, graphicsQueue, renderPass, descriptorPool);
-    ImGui_ImplVulkan_Init(&vulkanInitInfo, renderPass);
-
-    // 创建命令缓冲区
-    VkCommandPool commandPool;
-    VkCommandBuffer commandBuffer;
-    CreateCommandBuffer(device, commandPool, commandBuffer);
+    // 初始化 Vulkan
+    vulkanBase = new VulkanBase();
+    vulkanBase->Initialize(window, instance, device, physicalDevice, graphicsQueue, renderPass, descriptorPool);
+    sceneCommandBuffer = vulkanBase->CreateCommandBuffer();
 
     // 主循环
     while (!glfwWindowShouldClose(window)) {
         glfwPollEvents();
-        UpdatePerformanceData(taskScheduler, device, graphicsQueue, commandBuffer);
+        UpdatePerformanceData(taskScheduler, device, graphicsQueue, sceneCommandBuffer);
 
         // 开始新的 ImGui 帧
         ImGui_ImplVulkan_NewFrame();
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
 
+        BeginDocking();  // 允许窗口拖拽和布局调整
         RenderMainMenuBar();
-        RenderSceneWindow();
+        RenderSceneWindow();  // 显示 Vulkan 场景渲染
         RenderHierarchyWindow();
         RenderInspectorWindow();
         RenderConsoleWindow();
         RenderPerformanceWindow();
 
-        // 渲染 ImGui
+        // 渲染 ImGui 和 Vulkan 场景
         ImGui::Render();
-        RenderImGui(device, commandBuffer, graphicsQueue, renderPass, window);
+        vulkanBase->RenderScene(sceneCommandBuffer);  // 渲染场景
+        RenderImGui(device, sceneCommandBuffer, graphicsQueue, renderPass, window);
 
         glfwSwapBuffers(window);
     }
 
     // 清理
     taskScheduler.Cleanup();
-    CleanupVulkan(device, commandPool, descriptorPool, renderPass, instance);
+    vulkanBase->Cleanup();
+    CleanupVulkan(device, sceneCommandBuffer, descriptorPool, renderPass, instance);
 
     ImGui_ImplVulkan_Shutdown();
     ImGui_ImplGlfw_Shutdown();
