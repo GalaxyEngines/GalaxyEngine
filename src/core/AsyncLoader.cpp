@@ -11,15 +11,13 @@
 #include <functional>
 #include <atomic>
 
-using namespace MyEngine;
-
 class AsyncLoaderModule : public ModuleInterface {
 public:
     AsyncLoaderModule() : stopLoading(false) {}
 
     void Initialize() override {
-        unsigned int threadCount = std::thread::hardware_concurrency();//开始多线程加载
-        if (threadCount == 0) threadCount = 4;//默认这玩意四个
+        unsigned int threadCount = std::thread::hardware_concurrency();
+        if (threadCount == 0) threadCount = 4;
         for (unsigned int i = 0; i < threadCount; ++i) {
             loaderThreads.emplace_back(&AsyncLoaderModule::LoaderThreadFunc, this);
         }
@@ -38,9 +36,7 @@ public:
         }
     }
 
-    void OnEvent(const std::string& event) override {
-        // 处理事件（没做）
-    }
+    void OnEvent(const std::string& event) override {}
 
     void ProcessTask(const Task& task) override {
         if (task.GetType() == Task::TaskType::LoadResource) {
@@ -49,7 +45,6 @@ public:
         }
     }
 
-    // 提供给UI的API接口
     void LoadResourceAsync(const std::string& resourcePath, std::function<void(std::shared_ptr<std::vector<char>>)> callback) {
         EnqueueLoadTask(resourcePath, callback);
     }
@@ -142,7 +137,6 @@ private:
     }
 
     std::pair<std::string, std::function<void(std::shared_ptr<std::vector<char>>)>> ParseLoadTaskData(const std::string& data) {
-        // 数据格式 "资源路径;回调函数地址"（虽然这个是不好的方法）
         std::string resourcePath = data;
         std::function<void(std::shared_ptr<std::vector<char>>)> callback = nullptr;
         return {resourcePath, callback};
