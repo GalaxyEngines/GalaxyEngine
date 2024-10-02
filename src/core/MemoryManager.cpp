@@ -3,6 +3,7 @@
 #include <unordered_map>
 #include <iostream>
 #include <memory>
+#include <tuple>
 
 class MemoryPool {
 public:
@@ -47,30 +48,36 @@ private:
     std::mutex mutex;
 };
 
-class MemoryManagerModule : public ModuleInterface {
+// MemoryManagerModule 继承自已定义的 ModuleInterface
+class MemoryManagerModule : public MyEngine::ModuleInterface {  // 修复 C2504 错误，确保继承正确
 public:
-    void Initialize() override {
+    void Initialize() override {  // 修复 C3668 错误
         pools.emplace(64, std::make_unique<MemoryPool>(64));
         pools.emplace(256, std::make_unique<MemoryPool>(256));
         pools.emplace(1024, std::make_unique<MemoryPool>(1024));
         std::cout << "MemoryManager Initialized with memory pools" << std::endl;
     }
 
-    void Cleanup() override {
+    void Cleanup() override {  // 修复 C3668 错误
         pools.clear();
         std::cout << "MemoryManager Cleaned up." << std::endl;
     }
 
-    void OnEvent(const std::string& event) override {
+    void OnEvent(const std::string& event) override {  // 修复 C3668 错误
         std::cout << "Received memory event: " << event << std::endl;
     }
 
-    void ProcessTask(const Task& task) override {
-        auto [operation, size, pointer] = ParseMemoryTaskData(task.GetData());
+    void ProcessTask(const MyEngine::Task& task) override {  // 修复 C3668 和 C2065 错误
+        std::string operation;
+        size_t size;
+        void* pointer;
+        std::tie(operation, size, pointer) = ParseMemoryTaskData(task.GetData());
+
         if (operation == "allocate") {
             void* allocatedPtr = AllocateMemory(size);
             std::cout << "Allocated memory of size: " << size << std::endl;
-        } else if (operation == "free") {
+        }
+        else if (operation == "free") {
             FreeMemory(pointer, size);
             std::cout << "Freed memory of size: " << size << std::endl;
         }
@@ -80,7 +87,8 @@ public:
         auto pool = GetPool(size);
         if (pool) {
             return pool->Allocate();
-        } else {
+        }
+        else {
             return ::operator new(size);
         }
     }
@@ -89,7 +97,8 @@ public:
         auto pool = GetPool(size);
         if (pool) {
             pool->Deallocate(ptr);
-        } else {
+        }
+        else {
             ::operator delete(ptr);
         }
     }
@@ -110,10 +119,12 @@ private:
         std::string operation = "allocate";
         size_t size = 256;
         void* pointer = nullptr;
-        return {operation, size, pointer};
+
+        return { operation, size, pointer };
     }
 };
 
-extern "C" ModuleInterface* CreateModule() {
+// 动态创建模块实例
+extern "C" MyEngine::ModuleInterface* CreateModule() {
     return new MemoryManagerModule();
 }

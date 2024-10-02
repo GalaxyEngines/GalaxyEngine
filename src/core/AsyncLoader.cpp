@@ -11,10 +11,11 @@
 #include <functional>
 #include <atomic>
 
-class AsyncLoaderModule : public ModuleInterface {
+class AsyncLoaderModule : public MyEngine::ModuleInterface {
 public:
     AsyncLoaderModule() : stopLoading(false) {}
 
+    // 修复 C3668 错误，确保这些方法使用 override 关键字并且重写基类的虚方法
     void Initialize() override {
         unsigned int threadCount = std::thread::hardware_concurrency();
         if (threadCount == 0) threadCount = 4;
@@ -36,12 +37,17 @@ public:
         }
     }
 
-    void OnEvent(const std::string& event) override {}
+    void OnEvent(const std::string& event) override {
+        // 事件处理逻辑
+    }
 
-    void ProcessTask(const Task& task) override {
-        if (task.GetType() == Task::TaskType::LoadResource) {
-            auto [resourcePath, callback] = ParseLoadTaskData(task.GetData());
-            EnqueueLoadTask(resourcePath, callback);
+    void ProcessTask(const MyEngine::Task& task) override {
+        if (task.GetType() == MyEngine::Task::TaskType::LoadResource) {
+            std::pair<std::string, std::function<void(std::shared_ptr<std::vector<char>>)>> loadTaskData = ParseLoadTaskData(task.GetData());
+            auto& [resourcePath, callback] = loadTaskData;
+            if (!resourcePath.empty()) {
+                EnqueueLoadTask(resourcePath, callback);
+            }
         }
     }
 
@@ -68,7 +74,7 @@ private:
     void EnqueueLoadTask(const std::string& resourcePath, std::function<void(std::shared_ptr<std::vector<char>>)> callback) {
         {
             std::lock_guard<std::mutex> lock(queueMutex);
-            loadQueue.push({resourcePath, callback});
+            loadQueue.push({ resourcePath, callback });
         }
         cv.notify_one();
     }
@@ -139,10 +145,11 @@ private:
     std::pair<std::string, std::function<void(std::shared_ptr<std::vector<char>>)>> ParseLoadTaskData(const std::string& data) {
         std::string resourcePath = data;
         std::function<void(std::shared_ptr<std::vector<char>>)> callback = nullptr;
-        return {resourcePath, callback};
+        return { resourcePath, callback };
     }
 };
 
-extern "C" ModuleInterface* CreateModule() {
+// 动态创建模块
+extern "C" MyEngine::ModuleInterface* CreateModule() {
     return new AsyncLoaderModule();
 }

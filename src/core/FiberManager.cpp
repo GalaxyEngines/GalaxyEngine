@@ -20,7 +20,7 @@ public:
 
     void Initialize() override {
         schedulerThread = std::thread(&FiberManagerModule::SchedulerThreadFunc, this);
-        std::cout << "FiberManagerModule 上号了！." << std::endl;
+        std::cout << "FiberManagerModule Initialized." << std::endl;
     }
 
     void Cleanup() override {
@@ -32,14 +32,15 @@ public:
         if (schedulerThread.joinable()) {
             schedulerThread.join();
         }
-        std::cout << "FiberManagerModule Fucked up." << std::endl;
+        std::cout << "FiberManagerModule Cleaned up." << std::endl;
     }
 
     void OnEvent(const std::string& event) override {
         std::cout << "FiberManager received event: " << event << std::endl;
         if (event == "pause") {
             PauseFibers();
-        } else if (event == "resume") {
+        }
+        else if (event == "resume") {
             ResumeFibers();
         }
     }
@@ -85,23 +86,27 @@ private:
                 fiberTasks.pop();
             }
 
+            // 启动一个 fiber
             Fiber fiber = Fiber([taskFunc](Fiber&& sink) mutable {
                 taskFunc();
-                return std::move(sink);
-            });
+                return std::move(sink);  // 切换回调度器 fiber
+                });
 
-            fiber = std::move(fiber).resume();
+            // 执行并切换到 fiber
+            while (fiber) {
+                fiber = std::move(fiber).resume();  // 使用 resume 来切换上下文
+            }
         }
     }
 
     void PauseFibers() {
-        std::cout << "fucking all fibers..." << std::endl;
-        // 暂停所有fiber的逻辑
+        std::cout << "Pausing all fibers..." << std::endl;
+        // 实现暂停所有 fiber 的逻辑（如果需要）
     }
 
     void ResumeFibers() {
-        std::cout << "fuhuo all fibers..." << std::endl;
-        // 恢复所有fiber的逻辑
+        std::cout << "Resuming all fibers..." << std::endl;
+        // 实现恢复所有 fiber 的逻辑（如果需要）
     }
 
     std::function<void()> ParseFiberTaskData(const std::string& data) {
@@ -109,14 +114,15 @@ private:
         std::string action = parsedData["action"];
         if (action == "complex_computation") {
             return []() {
-                std::cout << "光纤复杂计算..." << std::endl;
-                // 在这里实现fiber的实际功能，这地方需要计算的
-                Fiber::yield(); // 切换上下文，可以调用yield
-            };
+                std::cout << "Fiber complex computation..." << std::endl;
+                // 在这里实现 fiber 的实际功能
+                // Fiber 内部切换
+                // 不使用 yield，fiber 会在完成后自动切换上下文
+                };
         }
         return []() {
             std::cout << "Running default fiber task..." << std::endl;
-        };
+            };
     }
 };
 
