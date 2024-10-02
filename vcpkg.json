@@ -1,0 +1,26 @@
+{
+  "name": "galaxyengine",
+  "version": "1.0.0",
+  "builtin-baseline": "b6a3d2d1c98858cdd3b0f2c7bdb1f923ea659702",
+  "dependencies": [
+    {
+      "name": "boost",
+      "features": ["context"]
+    },
+    {
+      "name": "nlohmann-json"
+    },
+    {
+      "name": "glfw3"
+    },
+    {
+      "name": "glm"
+    }
+  ],
+  "overrides": [
+    {
+      "name": "vulkan-sdk",
+      "version": "1.3.290"
+    }
+  ]
+}
