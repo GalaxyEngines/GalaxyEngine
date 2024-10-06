@@ -1,14 +1,6 @@
-一款轻量好用的游戏引擎
 ![Image text](https://github.com/GalaxyEngines/GalaxyEngine/blob/main/LOGO/icon.jpeg)
 
-设计 
-RENDERER
-VulkanMemoryManager是vulkan的显存管理器
-StreamingManager是资源流管理，来动态加载纹理和模型
-TextureCompressor纹理压缩和解压缩
-CORE
-TaskScheduler多线程任务
-FiberManager纤
-AsyncLoader异步加载
-
-
+项目采用vcpkg管理所有库，本项目提供了自动配置运行环境的脚本。
+使用方法：
+  1. https://github.com/GalaxyEngines/GalaxyEngine.git
+  2. 如果你是linux选择install.sh，如果你是windwos选择install.bat
