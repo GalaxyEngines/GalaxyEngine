@@ -5,6 +5,7 @@
 #include <stdexcept>
 #include <algorithm>
 #include <unordered_set>
+
 #include <stack>
 
 ModuleManager::~ModuleManager() {
