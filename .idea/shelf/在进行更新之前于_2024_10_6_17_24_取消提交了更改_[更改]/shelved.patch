@@ -1,0 +1,16 @@
+Index: .idea/vcs.xml
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+--- a/.idea/vcs.xml	(revision 09239d97344b095d432daa4d709a2f66bbccf090)
++++ b/.idea/vcs.xml	(date 1728111074647)
+@@ -2,8 +2,6 @@
+ <project version="4">
+   <component name="VcsDirectoryMappings">
+     <mapping directory="" vcs="Git" />
+-    <mapping directory="$PROJECT_DIR$/thirdparty/GLFW" vcs="Git" />
+-    <mapping directory="$PROJECT_DIR$/thirdparty/glm" vcs="Git" />
+-    <mapping directory="$PROJECT_DIR$/thirdparty/imgui" vcs="Git" />
++    <mapping directory="$PROJECT_DIR$/vcpkg/vcpkg" vcs="Git" />
+   </component>
+ </project>
+\ No newline at end of file
