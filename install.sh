@@ -9,4 +9,4 @@ else
     echo "vcpkg已安装，跳过安装。"
 fi
 
-vcpkg install glfw3 vulkan glm
+vcpkg install glfw3 vulkan glm imgui

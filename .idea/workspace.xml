@@ -24,6 +24,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="040c6abd-55a1-4ed1-9862-a8ea04afb3e4" name="更改" comment="设计架构">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/vcpkg/.gitattributes" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/vcpkg/.github/ISSUE_TEMPLATE/00-report-package-build-failure.yml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/vcpkg/.github/ISSUE_TEMPLATE/01-request-a-new-port.yml" afterDir="false" />
@@ -9192,7 +9193,6 @@
       <change afterPath="$PROJECT_DIR$/vcpkg/triplets/x64-windows-static.cmake" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/vcpkg/triplets/x64-windows.cmake" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/vcpkg/triplets/x86-windows.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vcpkg/vcpkg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/vcpkg/versions/3-/3fd.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/vcpkg/versions/7-/7zip.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/vcpkg/versions/a-/ableton-link.json" afterDir="false" />
@@ -11729,7 +11729,27 @@
       <change afterPath="$PROJECT_DIR$/vcpkg/versions/z-/zydis.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/vcpkg/versions/z-/zyre.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/vcpkg/versions/z-/zziplib.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/Engine.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Engine.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/install.bat" beforeDir="false" afterPath="$PROJECT_DIR$/install.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/install.sh" beforeDir="false" afterPath="$PROJECT_DIR$/install.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/AsyncLoader.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/AsyncLoader.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/AsyncLoader.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/AsyncLoader.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/Engine.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/Engine.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/FiberManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/FiberManager.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/FiberManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/FiberManager.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/MemoryManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/MemoryManager.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/MemoryManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/MemoryManager.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/ModuleManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/ModuleManager.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/ModuleManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/ModuleManager.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/TaskScheduler.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/TaskScheduler.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/TaskScheduler.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/TaskScheduler.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/VulkanBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/VulkanBase.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/engine/network/a.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/net/a.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/a.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/a.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -11752,10 +11772,26 @@
     <option name="UPDATE_TYPE" value="REBASE" />
     <option name="WARN_ABOUT_CRLF" value="false" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;PlaidMrdeer&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/GalaxyEngines/GalaxyEngine.git&quot;,
+    &quot;accountId&quot;: &quot;70445307-1810-4e64-abb6-8719add49bea&quot;
+  }
+}</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/core/AsyncLoader.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/core/MemoryManager.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/core/ModuleManager.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/core/TaskScheduler.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/core/VulkanBase.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/platform/a.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/ui/a.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/user/a.cpp" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -11769,7 +11805,7 @@
   &quot;associatedIndex&quot;: 5
 }</component>
   <component name="ProjectId" id="2mpaSxVjpz2nJppx07F81HEJxO9" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -11788,7 +11824,7 @@
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/plaidmrdeer/dev/GalaxyEngine/src/engine/resource&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/plaidmrdeer/dev/GalaxyEngine&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -11813,11 +11849,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="GalaxyEngine" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="GalaxyEngine" TARGET_NAME="GalaxyEngine" CONFIG_NAME="Release" RUN_TARGET_PROJECT_NAME="GalaxyEngine" RUN_TARGET_NAME="GalaxyEngine">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -11843,7 +11874,10 @@
       <workItem from="1728042498759" duration="2742000" />
       <workItem from="1728111073407" duration="1464000" />
       <workItem from="1728114295758" duration="2739000" />
-      <workItem from="1728202304955" duration="4357000" />
+      <workItem from="1728202304955" duration="4989000" />
+      <workItem from="1728302787650" duration="3748000" />
+      <workItem from="1728354137106" duration="3000" />
+      <workItem from="1728356210863" duration="2000" />
     </task>
     <task id="LOCAL-00001" summary="重新设计架构">
       <option name="closed" value="true" />
@@ -11861,7 +11895,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728206616351</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="设计架构">
+      <option name="closed" value="true" />
+      <created>1728206837017</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1728206837017</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
