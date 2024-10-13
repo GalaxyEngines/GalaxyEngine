@@ -1,7 +1,7 @@
 @echo off
 setlocal
 
-cd "%~dp0vcpkg" || exit /b
+cd "%~dp0vcpkg\vcpkg" || exit /b
 
 if not exist "installed" (
     echo 安装 vcpkg...

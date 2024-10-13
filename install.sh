@@ -1,6 +1,5 @@
 #!/bin/bash
-
-cd "$(pwd)/vcpkg" || exit
+cd "$(pwd)/vcpkg/vcpkg" || exit
 
 if [ ! -d "installed" ]; then
     echo "安装 vcpkg..."
