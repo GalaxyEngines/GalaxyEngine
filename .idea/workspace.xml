@@ -17,13 +17,33 @@
       <config projectName="GalaxyEngine" targetName="GalaxyEngine" />
     </generated>
   </component>
-  <component name="CMakeSettings">
+  <component name="CMakeSettings" AUTO_RELOAD="true">
     <configurations>
       <configuration PROFILE_NAME="Release" ENABLED="true" CONFIG_NAME="Release" />
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="040c6abd-55a1-4ed1-9862-a8ea04afb3e4" name="更改" comment="设计架构" />
+    <list default="true" id="040c6abd-55a1-4ed1-9862-a8ea04afb3e4" name="更改" comment="设计架构">
+      <change afterPath="$PROJECT_DIR$/.idea/jsonSchemas.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/core/config/config.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/core/config/config.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/Engine.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/ModuleInterface.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/VulkanBase.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/install.bat" beforeDir="false" afterPath="$PROJECT_DIR$/install.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/install.sh" beforeDir="false" afterPath="$PROJECT_DIR$/install.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/Engine.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vcpkg/vcpkg/ports/cppmicroservices/portfile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/vcpkg/vcpkg/ports/cppmicroservices/portfile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vcpkg/vcpkg/ports/cryptopp/portfile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/vcpkg/vcpkg/ports/cryptopp/portfile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vcpkg/vcpkg/ports/llvm/portfile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/vcpkg/vcpkg/ports/llvm/portfile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vcpkg/vcpkg/ports/python3/portfile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/vcpkg/vcpkg/ports/python3/portfile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vcpkg/vcpkg/ports/wt/portfile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/vcpkg/vcpkg/ports/wt/portfile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vcpkg/vcpkg/scripts/test_ports/vcpkg-ci-ankurvdev-embedresource/project/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/vcpkg/vcpkg/scripts/test_ports/vcpkg-ci-ankurvdev-embedresource/project/main.cpp" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,7 +57,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Release" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
     <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -60,9 +80,11 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/core/AsyncLoader.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/core/MemoryManager.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/core/MemoryManager.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/core/ModuleManager.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/core/TaskScheduler.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/core/VulkanBase.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/core/config/config.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/platform/a.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/ui/a.cpp" root0="FORCE_HIGHLIGHTING" />
@@ -103,7 +125,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "http.proxy",
+    "settings.editor.selected.configurable": "CMakeSettings",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -115,10 +137,10 @@
       <recent name="$PROJECT_DIR$/src/engine/audio" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/core" />
       <recent name="$PROJECT_DIR$/src/engine" />
-      <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
   <component name="RunManager">
@@ -160,7 +182,9 @@
       <workItem from="1728720145366" duration="362000" />
       <workItem from="1728721395879" duration="29000" />
       <workItem from="1728721427062" duration="852000" />
-      <workItem from="1728826071576" duration="219000" />
+      <workItem from="1728826071576" duration="3636000" />
+      <workItem from="1728829810736" duration="2851000" />
+      <workItem from="1728886169758" duration="6419000" />
     </task>
     <task id="LOCAL-00001" summary="重新设计架构">
       <option name="closed" value="true" />
@@ -202,7 +226,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728826178454</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="设计架构">
+      <option name="closed" value="true" />
+      <created>1728826316524</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1728826316524</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
