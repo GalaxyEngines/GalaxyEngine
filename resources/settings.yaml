@@ -1,12 +1,210 @@
-#Settings related to the software window.
+# GalaxyEngine引擎通用配置文件
+
 window:
-  #Set the window size when the software starts.
+  # 设置引擎编辑器启动时的窗口大小。
   size:
     width: 1920
     height: 1080
-  #Whether to start the software in fullscreen mode.
-  #Setting it to true will override the window.size option.
+
+  # 是否以全屏模式启动引擎编辑器。
   fullscreen: true
-  #Set whether the software window can be resized.
-  #The initial size of this setting will be adjusted according to the size defined by window.size.
+
+  # 设置引擎编辑器窗口是否可以调整大小。
   resizable: true
+
+editor:
+  # 默认布局配置文件。
+  layout: "default"
+
+  # 是否启用自动保存功能。
+  auto_save: true
+
+  # 自动保存间隔时间（分钟）。
+  auto_save_interval: 10
+
+  # 主题设置，可选值：light, dark。
+  theme: "dark"
+
+  # 是否启用代码自动完成。
+  code_autocomplete: true
+
+rendering:
+  # 默认渲染后端，使用 Vulkan。
+  default_backend: "Vulkan"
+
+  # 是否启用实时全局光照
+  real_time_global_illumination: true
+
+  # 实时全局光照描述：基于光线追踪的实时全局光照系统，提供高质量的动态光照效果。
+
+  # 是否启用虚拟化几何体
+  virtualized_geometry: true
+
+  # 虚拟化几何体描述：使用自适应细分技术，实现高效的几何体渲染，支持高达数十亿多边形的场景。
+
+  # 阴影质量，可选值：low, medium, high, ultra。
+  shadow_quality: "high"
+
+  # 是否启用抗锯齿。
+  anti_aliasing: true
+
+  # 抗锯齿技术，可选值：FXAA, TAA, MSAA。
+  anti_aliasing_method: "TAA"
+
+  # 最大光源数量。
+  max_lights: 16
+
+scripting:
+  # 默认脚本语言，可选值：C#, Lua, Python, JavaScript。
+  default_language: "C#"
+
+  # 脚本编译模式，可选值：Debug, Release。
+  compile_mode: "Debug"
+
+  # 脚本文件目录。
+  script_path: "./scripts/"
+
+assets:
+  # 资源目录。
+  asset_path: "./assets/"
+
+  # 是否启用资源热重载。
+  hot_reload: true
+
+  # 支持的纹理格式列表。
+  texture_formats:
+    - "png"
+    - "jpg"
+    - "tga"
+    - "dds"
+
+  # 支持的模型格式列表。
+  model_formats:
+    - "fbx"
+    - "obj"
+    - "dae"
+    - "gltf"
+
+build:
+  # 输出平台，可选值：Windows, macOS, Linux, Android, iOS, WebGL。
+  target_platforms:
+    - "Windows"
+    - "macOS"
+    - "Linux"
+
+  # 是否包含调试符号。
+  include_debug_symbols: true
+
+  # 输出目录。
+  output_path: "./builds/"
+
+  # 压缩级别，范围从 0（不压缩）到 9（最大压缩）。
+  compression_level: 5
+
+input:
+  # 支持的输入设备列表。
+  devices:
+    - "Keyboard"
+    - "Mouse"
+    - "Gamepad"
+    - "Touch"
+
+  # 默认输入映射配置文件。
+  default_input_map: "default_input.json"
+
+physics:
+  # 物理引擎，可选值：Bullet, PhysX, Havok。
+  engine: "PhysX"
+
+  # 重力设置（X, Y, Z）。
+  gravity:
+    x: 0.0
+    y: -9.81
+    z: 0.0
+
+  # 物理模拟精度。
+  simulation_accuracy: "high"
+
+networking:
+  # 是否启用网络功能。
+  enable_networking: true
+
+  # 网络同步模式，可选值：Client-Server, Peer-to-Peer。
+  sync_mode: "Client-Server"
+
+  # 默认网络端口。
+  default_port: 7777
+
+debug:
+  # 是否启用调试模式。
+  debug_mode: true
+
+  # 日志记录级别，可选值：none, error, warning, info, debug。
+  log_level: "info"
+
+  # 是否在编辑器中显示调试信息。
+  show_debug_info: true
+
+performance:
+  # 是否启用多线程支持。
+  multi_threading: true
+
+  # 最大线程数量。
+  max_threads: 8
+
+  # 内存使用警告阈值（MB）。
+  memory_warning_threshold: 2048
+
+updates:
+  # 是否启用引擎自动更新。
+  auto_update_engine: true
+
+  # 检查更新的频率（天）。
+  update_check_interval: 14
+
+  # 更新服务器地址。
+  update_server: "https://updates.engine.example.com"
+
+version_control:
+  # 版本控制系统，可选值：Git, SVN, Perforce。
+  vcs: "Git"
+
+  # 是否启用自动提交。
+  auto_commit: false
+
+  # 代码仓库地址。
+  repository_url: "https://github.com/your-repo"
+
+collaboration:
+  # 是否启用多人协作编辑。
+  enable_collaboration: false
+
+  # 协作服务器地址。
+  collaboration_server: "collab.example.com"
+
+dependencies:
+  # 使用 vcpkg 管理的依赖库。
+  managed_by_vcpkg: true
+
+  # 包含的库列表。
+  libraries:
+    - name: "imgui"
+      version: "latest"
+    - name: "glfw3"
+      version: "latest"
+    - name: "glm"
+      version: "latest"
+    - name: "nlohmann_json"
+      version: "latest"
+    - name: "yaml-cpp"
+      version: "latest"
+
+extensions:
+  # 是否启用插件系统。
+  enable_plugins: true
+
+  # 已安装的插件列表。
+  installed_plugins:
+    - "PhysicsDebugger"
+    - "AdvancedProfiler"
+    - "AIBehaviorTreeEditor"
