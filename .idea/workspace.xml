@@ -24,7 +24,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="040c6abd-55a1-4ed1-9862-a8ea04afb3e4" name="更改" comment="配置资源文件">
+      <change afterPath="$PROJECT_DIR$/vcpkg/vcpkg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vcpkg/isNothing" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +110,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;CMakeSettings&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -127,6 +130,11 @@
   </component>
   <component name="RunManager">
     <configuration name="GalaxyEngine" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="GalaxyEngine" TARGET_NAME="GalaxyEngine" CONFIG_NAME="Release" RUN_TARGET_PROJECT_NAME="GalaxyEngine" RUN_TARGET_NAME="GalaxyEngine">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -164,6 +172,8 @@
       <workItem from="1728886169758" duration="7407000" />
       <workItem from="1728900060196" duration="290000" />
       <workItem from="1728904343275" duration="1064000" />
+      <workItem from="1728991821732" duration="19000" />
+      <workItem from="1728991842983" duration="413000" />
     </task>
     <task id="LOCAL-00001" summary="重新设计架构">
       <option name="closed" value="true" />
