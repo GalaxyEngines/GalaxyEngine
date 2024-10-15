@@ -1,0 +1,12 @@
+#Settings related to the software window.
+window:
+  #Set the window size when the software starts.
+  size:
+    width: 1920
+    height: 1080
+  #Whether to start the software in fullscreen mode.
+  #Setting it to true will override the window.size option.
+  fullscreen: true
+  #Set whether the software window can be resized.
+  #The initial size of this setting will be adjusted according to the size defined by window.size.
+  resizable: true
