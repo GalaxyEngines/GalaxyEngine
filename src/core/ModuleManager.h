@@ -1,78 +1,51 @@
-// // ModuleManager.h
-// //国庆节修改
-//
-// #ifndef MODULE_MANAGER_H
-// #define MODULE_MANAGER_H
-//
-// #include "ModuleInterface.h"
-// #include <string>
-// #include <unordered_map>
-// #include <vector>
-// #include <memory>
-// #include <mutex>
-// #include <filesystem>
-//
-// #ifdef _WIN32
-// #include <Windows.h>
-// #else
-// #include <dlfcn.h>
-// #endif
-//
-// class ModuleManager {
-// public:
-//     ModuleManager() = default;
-//     ~ModuleManager();
-//
-//     // 禁止拷贝和赋值
-//     ModuleManager(const ModuleManager&) = delete;
-//     ModuleManager& operator=(const ModuleManager&) = delete;
-//
-//     // 模块发现和注册
-//     void DiscoverModules(const std::string& rootPath);
-//
-//     // 初始化所有模块
-//     void InitializeModules();
-//
-//     // 清理所有模块
-//     void CleanupModules();
-//
-//     // 向模块发送任务
-//     void SendTaskToModule(const std::string& moduleName, const Task& task);
-//
-//     // 获取模块的依赖关系
-//     const std::vector<std::string>& GetDependencies(const std::string& module) const;
-//
-// private:
-//     enum class ModuleState {
-//         Uninitialized,
-//         Initializing,
-//         Initialized,
-//         Failed
-//     };
-//
-//     // 注册模块（从元数据）
-//     void RegisterModuleFromMetadata(const std::filesystem::path& metadataPath);
-//
-//     // 初始化单个模块
-//     void InitializeModule(const std::string& moduleName);
-//
-//     // 拓扑排序，确定模块初始化顺序
-//     bool TopologicalSort(std::vector<std::string>& sortedModules);
-//
-//     // 模块容器
-//     std::unordered_map<std::string, std::unique_ptr<ModuleInterface>> modules;
-//
-//     // 模块状态
-//     std::unordered_map<std::string, ModuleState> moduleStates;
-//
-//     // 模块依赖图
-//     std::unordered_map<std::string, std::vector<std::string>> dependencyGraph;
-//
-//     // 已加载的模块句柄（用于动态库的卸载）
-//     std::unordered_map<std::string, void*> loadedModules;
-//
-//     // 线程安全
-//     mutable std::mutex moduleMutex;
-// };
-//
-// #endif // MODULE_MANAGER_H
+#ifndef MODULE_MANAGER_H
+#define MODULE_MANAGER_H
+
+#include <string>
+#include <map>
+#include <vector>
+#include <memory>
+#include <mutex>
+#include <unordered_set>
+#include "ModuleInterface.h"
+
+class ModuleManager {
+public:
+    ModuleManager() = default;
+    ~ModuleManager();
+
+    // 注册模块
+    void RegisterModule(const std::string& name, std::unique_ptr<ModuleInterface> module);
+
+    // 卸载模块
+    void UnregisterModule(const std::string& name);
+
+    // 初始化所有模块
+    void InitializeModules();
+
+    // 清理所有模块
+    void CleanupModules();
+
+    // 处理事件
+    void OnEvent(const std::string& event);
+
+    // 添加和移除模块依赖
+    void AddDependency(const std::string& module, const std::string& dependency);
+    void RemoveDependency(const std::string& module, const std::string& dependency);
+
+    // 加载和卸载动态模块
+    void LoadModuleFromFile(const std::string& filePath, const std::string& moduleName);
+    void UnloadModule(const std::string& name);
+
+private:
+    std::map<std::string, std::unique_ptr<ModuleInterface>> modules;  // 模块集合
+    std::map<std::string, std::vector<std::string>> dependencyGraph;  // 依赖关系图
+    std::map<std::string, void*> loadedModules;  // 动态加载的模块
+
+    std::mutex moduleMutex;  // 线程安全
+
+    // 拓扑排序，返回拓扑排序结果
+    bool TopologicalSort(std::vector<std::string>& sortedModules);
+};
+
+#endif // MODULE_MANAGER_H

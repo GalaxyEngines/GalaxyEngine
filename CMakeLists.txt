@@ -14,7 +14,10 @@ endif()
 set(RESOURCE_DIR "${CMAKE_SOURCE_DIR}/resources")
 add_definitions(-DRESOURCE_PATH="${RESOURCE_DIR}")
 
-add_executable(GalaxyEngine ${SOURCE})
+add_executable(GalaxyEngine ${SOURCE}
+        src/core/VulkanBase.h
+        src/core/ModuleInterface.cpp
+        src/core/ModuleInterface.h)
 add_custom_command(
         TARGET GalaxyEngine POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_directory
