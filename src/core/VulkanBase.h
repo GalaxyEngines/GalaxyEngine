@@ -3,16 +3,18 @@
 
 #include "ModuleInterface.h"
 #include <vulkan/vulkan.h>
+#include <GLFW/glfw3.h>  // 需要GLFW库用于窗口系统集成
 #include <vector>
 #include <string>
+#include <set>
 #include <optional>
 
 namespace MyEngine {
 
-    class VulkanBaseModule : public ModuleInterface {
+    class VulkanBase : public ModuleInterface {
     public:
-        VulkanBaseModule();
-        virtual ~VulkanBaseModule();
+        VulkanBase();
+        virtual ~VulkanBase();
 
         // 初始化 Vulkan
         void initialize() override;
@@ -32,24 +34,58 @@ namespace MyEngine {
         // 获取可用的 GPU 列表
         std::vector<std::string> getAvailableGPUs();
 
+        // 渲染一帧
+        void renderFrame();  // 确保声明了 renderFrame()
+
     private:
         // Vulkan 实例和设备
         VkInstance instance;
         VkPhysicalDevice physicalDevice;
         VkDevice device;
+        VkQueue graphicsQueue;
+        VkSurfaceKHR surface;
+        void* windowHandle;
 
         // Vulkan 逻辑
         void initVulkan();
         void cleanupVulkan();
         void createInstance();
-        void createDevice();
-        void renderFrame();
+        void createSurface();
+        void pickPhysicalDevice();
+        void createLogicalDevice();
 
         // 检查 Vulkan 设备是否合适
         bool isDeviceSuitable(VkPhysicalDevice device);
 
-        // 窗口句柄
-        void* windowHandle;
+        // 队列家族索引
+        struct QueueFamilyIndices {
+            std::optional<uint32_t> graphicsFamily;
+            std::optional<uint32_t> presentFamily;
+
+            bool isComplete() const {
+                return graphicsFamily.has_value() && presentFamily.has_value();
+            }
+        };
+
+        QueueFamilyIndices findQueueFamilies(VkPhysicalDevice device);
+
+        // Vulkan 扩展
+        std::vector<const char*> getRequiredExtensions();
+        bool checkDeviceExtensionSupport(VkPhysicalDevice device);
+
+        // 设备扩展
+        std::vector<const char*> deviceExtensions = {
+            VK_KHR_SWAPCHAIN_EXTENSION_NAME
+        };
+
+        // 检查交换链支持
+        struct SwapChainSupportDetails {
+            VkSurfaceCapabilitiesKHR capabilities;
+            std::vector<VkSurfaceFormatKHR> formats;
+            std::vector<VkPresentModeKHR> presentModes;
+        };
+
+        SwapChainSupportDetails querySwapChainSupport(VkPhysicalDevice device);
     };
 
 }

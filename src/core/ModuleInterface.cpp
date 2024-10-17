@@ -2,18 +2,17 @@
 #include <iostream>
 #include <stdexcept>  // 引入标准异常库
 
+namespace MyEngine {
+
 // 构造函数，初始化模块
 ModuleInterface::ModuleInterface() : initialized(false), active(false) {
     std::cout << "ModuleInterface 模块被创建" << std::endl;
 }
 
-// 析构函数，清理模块资源
+// 析构函数，不能调用虚函数
 ModuleInterface::~ModuleInterface() {
-    // 确保在销毁时模块已经被正确关闭
-    if (active) {
-        shutdown();  // 在析构前安全关闭
-    }
     std::cout << "ModuleInterface 模块被销毁" << std::endl;
+    // 不在析构函数中调用虚函数
 }
 
 // 模块的初始化方法，子类可以重写进行具体的初始化操作
@@ -95,3 +94,5 @@ void ModuleInterface::processTask(const Task& task) {
         // 错误处理逻辑，可以记录日志或者标记任务失败
     }
 }
+
+}  // namespace MyEngine

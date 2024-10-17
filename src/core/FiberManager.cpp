@@ -9,7 +9,7 @@
 #include <atomic>
 #include <iostream>
 #include <boost/context/fiber.hpp>
-#include <nlohmann/json.hpp> // 用于解析更好的数据格式（JSON）
+#include <nlohmann/json.hpp>
 
 using json = nlohmann::json;
 using namespace MyEngine;
@@ -18,12 +18,12 @@ class FiberManagerModule : public ModuleInterface {
 public:
     FiberManagerModule() : stop(false) {}
 
-    void Initialize() override {
+    void initialize() override {
         schedulerThread = std::thread(&FiberManagerModule::SchedulerThreadFunc, this);
-        std::cout << "FiberManagerModule Initialized." << std::endl;
+        std::cout << "FiberManagerModule ." << std::endl;
     }
 
-    void Cleanup() override {
+    void shutdown() override {
         {
             std::lock_guard<std::mutex> lock(queueMutex);
             stop = true;
@@ -35,22 +35,20 @@ public:
         std::cout << "FiberManagerModule Cleaned up." << std::endl;
     }
 
-    void OnEvent(const std::string& event) override {
+    void onEvent(const std::string& event) override {
         std::cout << "FiberManager received event: " << event << std::endl;
         if (event == "pause") {
             PauseFibers();
-        }
-        else if (event == "resume") {
+        } else if (event == "resume") {
             ResumeFibers();
         }
     }
 
-    void ProcessTask(const Task& task) override {
-        auto fiberFunc = ParseFiberTaskData(task.GetData());
+    void processTask(const std::string& taskData) override {
+        auto fiberFunc = ParseFiberTaskData(taskData);
         EnqueueFiberTask(fiberFunc);
     }
 
-    // 提供给UI的API接口
     void RunFiber(std::function<void()> fiberFunc) {
         EnqueueFiberTask(fiberFunc);
     }
@@ -86,27 +84,23 @@ private:
                 fiberTasks.pop();
             }
 
-            // 启动一个 fiber
             Fiber fiber = Fiber([taskFunc](Fiber&& sink) mutable {
                 taskFunc();
-                return std::move(sink);  // 切换回调度器 fiber
-                });
+                return std::move(sink);
+            });
 
-            // 执行并切换到 fiber
             while (fiber) {
-                fiber = std::move(fiber).resume();  // 使用 resume 来切换上下文
+                fiber = std::move(fiber).resume();
             }
         }
     }
 
     void PauseFibers() {
         std::cout << "Pausing all fibers..." << std::endl;
-        // 实现暂停所有 fiber 的逻辑（如果需要）
     }
 
     void ResumeFibers() {
         std::cout << "Resuming all fibers..." << std::endl;
-        // 实现恢复所有 fiber 的逻辑（如果需要）
     }
 
     std::function<void()> ParseFiberTaskData(const std::string& data) {
@@ -115,14 +109,11 @@ private:
         if (action == "complex_computation") {
             return []() {
                 std::cout << "Fiber complex computation..." << std::endl;
-                // 在这里实现 fiber 的实际功能
-                // Fiber 内部切换
-                // 不使用 yield，fiber 会在完成后自动切换上下文
-                };
+            };
         }
         return []() {
-            std::cout << "Running default fiber task..." << std::endl;
-            };
+            std::cout << "boom fuck fiber task..." << std::endl;
+        };
     }
 };
 
