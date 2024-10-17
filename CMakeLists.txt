@@ -14,10 +14,7 @@ endif()
 set(RESOURCE_DIR "${CMAKE_SOURCE_DIR}/resources")
 add_definitions(-DRESOURCE_PATH="${RESOURCE_DIR}")
 
-add_executable(GalaxyEngine ${SOURCE}
-        src/core/VulkanBase.h
-        src/core/ModuleInterface.cpp
-        src/core/ModuleInterface.h)
+add_executable(GalaxyEngine ${SOURCE})
 add_custom_command(
         TARGET GalaxyEngine POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_directory
@@ -49,6 +46,14 @@ find_package(yaml-cpp CONFIG REQUIRED)
 if(NOT yaml-cpp_FOUND)
     message(FATAL_ERROR "yaml-cpp not found. Please install it via vcpkg.")
 endif()
+find_package(Bullet CONFIG REQUIRED)
+if(NOT Bullet_FOUND)
+    message(FATAL_ERROR "Bullet not found. Please install it via vcpkg.")
+endif()
+find_package(OpenAL CONFIG REQUIRED)
+if(NOT OpenAL_FOUND)
+    message(FATAL_ERROR "OpenAL not found. Please install it via vcpkg.")
+endif()
 
 
 target_link_libraries(GalaxyEngine PRIVATE
@@ -58,5 +63,7 @@ target_link_libraries(GalaxyEngine PRIVATE
         imgui::imgui
         nlohmann_json::nlohmann_json
         yaml-cpp::yaml-cpp
+        OpenAL::OpenAL
+        ${BULLET_LIBRARIES}
 )
 target_include_directories(GalaxyEngine PRIVATE include)
