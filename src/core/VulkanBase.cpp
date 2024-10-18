@@ -38,7 +38,7 @@ void VulkanBase::onEvent(const std::string& event) {
 
 // 处理任务
 void VulkanBase::processTask(const Task& task) {
-    if (task.GetType() == Task::TaskType::RenderFrame) {
+    if (task.GetType() == Task::TaskType::renderFrame) {
         renderFrame();
     }
 }

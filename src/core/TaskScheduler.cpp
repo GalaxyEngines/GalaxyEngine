@@ -17,7 +17,7 @@ class TaskSchedulerModule : public ModuleInterface {
 public:
     TaskSchedulerModule() : stop(false) {}
 
-    void Initialize() override {
+    void initialize() override {  // 修正命名
         unsigned int threadCount = std::thread::hardware_concurrency();
         if (threadCount == 0) threadCount = 4; // 默认使用 4 个线程
         for (unsigned int i = 0; i < threadCount; ++i) {
@@ -26,7 +26,7 @@ public:
         std::cout << "任务调度器初始化 " << threadCount << " threads." << std::endl;
     }
 
-    void Cleanup() override {
+    void shutdown() override {  // 修正命名
         {
             std::lock_guard<std::mutex> lock(queueMutex);
             stop = true;
@@ -37,22 +37,28 @@ public:
                 worker.join();
             }
         }
-        std::cout << "TaskScheduler Fucked up." << std::endl;
+        std::cout << "TaskScheduler 已关闭。" << std::endl;
     }
 
-    void OnEvent(const std::string& event) override {
+    void onEvent(const std::string& event) override {  // 修正命名
         std::cout << "Received event: " << event << std::endl;
         if (event == "shutdown") {
             StopScheduler();
         }
     }
 
-    void ProcessTask(const Task& task) override {
+    void processTask(const Task& task) override {  // 修正命名和签名
         auto parsedTask = ParseTaskData(task.GetData());
         EnqueueTask([parsedTask]() {
             // 执行解析后的任务逻辑
             std::cout << "正在执行解析任务: " << parsedTask << std::endl;
         });
+    }
+
+    // 实现 update() 以符合纯虚函数要求
+    void update() override {
+        // 任务调度器的更新逻辑可以放在这里
+        std::cout << "TaskSchedulerModule updated." << std::endl;
     }
 
     // 提供给UI的API接口，提交任务并返回 future 以获取结果
@@ -117,14 +123,14 @@ private:
             std::string taskType = parsedData["task_type"];
             return taskType; // 返回任务类型作为解析结果
         } catch (const json::parse_error& e) {
-            std::cerr << "JSON parse 炸了: " << e.what() << std::endl;
+            std::cerr << "JSON parse 错误: " << e.what() << std::endl;
             return "invalid";
         }
     }
 
     // 停止任务调度器
     void StopScheduler() {
-        std::cout << "Fucking down TaskScheduler..." << std::endl;
+        std::cout << "Stopping TaskScheduler..." << std::endl;
         stop = true;
         cv.notify_all();
     }

@@ -4,6 +4,7 @@
 #include <iostream>
 #include <memory>
 #include <tuple>
+#include <vector>  // 修复 'vector' 未解析符号的错误
 
 class MemoryPool {
 public:
@@ -49,25 +50,25 @@ private:
 };
 
 // MemoryManagerModule 继承自已定义的 ModuleInterface
-class MemoryManagerModule : public MyEngine::ModuleInterface {  // 修复 C2504 错误，确保继承正确
+class MemoryManagerModule : public MyEngine::ModuleInterface {
 public:
-    void Initialize() override {  // 修复 C3668 错误
+    void initialize() override {  // 实现 initialize() 以替换纯虚函数
         pools.emplace(64, std::make_unique<MemoryPool>(64));
         pools.emplace(256, std::make_unique<MemoryPool>(256));
         pools.emplace(1024, std::make_unique<MemoryPool>(1024));
         std::cout << "Memory Initialized with memory pools" << std::endl;
     }
 
-    void Cleanup() override {  // 修复 C3668 错误
+    void shutdown() override {  // 实现 shutdown() 以替换纯虚函数
         pools.clear();
         std::cout << "Memory Cleaned up." << std::endl;
     }
 
-    void OnEvent(const std::string& event) override {  // 修复 C3668 错误
+    void onEvent(const std::string& event) override {  // 实现 onEvent() 以替换纯虚函数
         std::cout << "Received memory event: " << event << std::endl;
     }
 
-    void ProcessTask(const MyEngine::Task& task) override {  // 修复 C3668 和 C2065 错误
+    void processTask(const MyEngine::Task& task) override {  // 实现 processTask() 以替换纯虚函数
         std::string operation;
         size_t size;
         void* pointer;
@@ -81,6 +82,12 @@ public:
             FreeMemory(pointer, size);
             std::cout << "Freed memory of size: " << size << std::endl;
         }
+    }
+
+    // 添加 update 函数以实现纯虚函数
+    void update() override {
+        std::cout << "MemoryManagerModule update called." << std::endl;
+        // 更新模块的逻辑，可以根据需要实现
     }
 
     void* AllocateMemory(size_t size) {
@@ -116,7 +123,7 @@ private:
     }
 
     std::tuple<std::string, size_t, void*> ParseMemoryTaskData(const std::string& data) {
-        std::string operation = "allocate";
+        std::string operation = "allocate";  // 模拟解析，默认操作为分配
         size_t size = 256;
         void* pointer = nullptr;
 

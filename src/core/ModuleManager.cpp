@@ -3,6 +3,7 @@
 #include <stdexcept>
 #include <algorithm>
 #include <functional>
+#include "ModuleInterface.h"
 
 #ifdef _WIN32
     #include <windows.h>  // Windows下的动态库加载

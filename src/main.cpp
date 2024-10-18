@@ -5,7 +5,8 @@
 #include "core/MemoryManager.h"
 #include "core/FiberManager.h"
 #include "core/AsyncLoader.h"
-#include "ui/a.cpp"
+#include "ui/a.h"  // UIInterface 的头文件
+
 int main() {
     // Step 1: 创建并初始化所有模块
     VulkanBase vulkanModule;
@@ -33,8 +34,8 @@ int main() {
     // 初始化异步加载器
     asyncLoader.initialize();
 
-    // Step 2: 初始化 UI 界面 (从 a.cpp 引入的 UI 界面)
-    UIInterface uiInterface;  // 从 a.cpp 中的类
+    // Step 2: 初始化 UI 界面 (从 a.h 引入的 UI 界面)
+    UIInterface uiInterface;  // 从 a.h 中的类
     uiInterface.initialize(vulkanModule);  // UI 依赖 Vulkan 进行渲染
 
     // Step 3: 主循环
@@ -62,6 +63,6 @@ int main() {
     taskScheduler.shutdown();
     vulkanModule.shutdown();
 
-    std::cout << "所有模块已成功fuck，程序结束。" << std::endl;
+    std::cout << "所有模块已成功关闭，程序结束。" << std::endl;
     return 0;
 }

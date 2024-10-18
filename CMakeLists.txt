@@ -1,61 +1,56 @@
 cmake_minimum_required(VERSION 3.30)
+# 设置VCPKG路径
 set(CMAKE_TOOLCHAIN_FILE "${CMAKE_CURRENT_SOURCE_DIR}/vcpkg/vcpkg/scripts/buildsystems/vcpkg.cmake")
+
+# 项目信息
 project(GalaxyEngine LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# 包含 src/core 和 src/ui 目录中的头文件和源文件
+include_directories(src/core src/ui)
 
+# 查找所有核心源文件
+file(GLOB_RECURSE CORE_SOURCE src/core/*.cpp src/core/*.h)
+file(GLOB_RECURSE UI_SOURCE src/ui/*.cpp src/ui/*.h)
 
-file(GLOB_RECURSE SOURCE src/*.cpp src/*.h)
-if(NOT SOURCE)
-    message(FATAL_ERROR "No source files found in src directory.")
+if(NOT CORE_SOURCE)
+    message(FATAL_ERROR "No core source files found in src/core directory.")
 endif()
 
+if(NOT UI_SOURCE)
+    message(FATAL_ERROR "No UI source files found in src/ui directory.")
+endif()
+
+# 设置资源目录
 set(RESOURCE_DIR "${CMAKE_SOURCE_DIR}/resources")
 add_definitions(-DRESOURCE_PATH="${RESOURCE_DIR}")
 
-add_executable(GalaxyEngine ${SOURCE})
+# 创建可执行文件，将核心文件和 UI 文件添加到目标源中
+add_executable(GalaxyEngine ${CORE_SOURCE} ${UI_SOURCE} src/main.cpp
+        src/ui/a.h)
+
+# 添加资源复制命令
 add_custom_command(
         TARGET GalaxyEngine POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_directory
         ${RESOURCE_DIR} $<TARGET_FILE_DIR:GalaxyEngine>/resources
 )
 
-
+# 查找依赖项
 find_package(glfw3 CONFIG REQUIRED)
-if(NOT glfw3_FOUND)
-    message(FATAL_ERROR "glfw3 not found. Please install it via vcpkg.")
-endif()
 find_package(glm CONFIG REQUIRED)
-if(NOT glm_FOUND)
-    message(FATAL_ERROR "glm not found. Please install it via vcpkg.")
-endif()
 find_package(Vulkan REQUIRED)
-if(NOT Vulkan_FOUND)
-    message(FATAL_ERROR "Vulkan not found. Please install it via vcpkg.")
-endif()
 find_package(imgui CONFIG REQUIRED)
-if(NOT imgui_FOUND)
-    message(FATAL_ERROR "imgui not found. Please install it via vcpkg.")
-endif()
 find_package(nlohmann_json CONFIG REQUIRED)
-if(NOT nlohmann_json_FOUND)
-    message(FATAL_ERROR "nlohmann_json not found. Please install it via vcpkg.")
-endif()
 find_package(yaml-cpp CONFIG REQUIRED)
-if(NOT yaml-cpp_FOUND)
-    message(FATAL_ERROR "yaml-cpp not found. Please install it via vcpkg.")
-endif()
 find_package(Bullet CONFIG REQUIRED)
-if(NOT Bullet_FOUND)
-    message(FATAL_ERROR "Bullet not found. Please install it via vcpkg.")
-endif()
 find_package(OpenAL CONFIG REQUIRED)
-if(NOT OpenAL_FOUND)
-    message(FATAL_ERROR "OpenAL not found. Please install it via vcpkg.")
-endif()
 
+# 包含 imgui 实现文件路径
+include_directories(${vcpkg_INCLUDE_DIRS}/imgui/backends)
 
+# 链接库
 target_link_libraries(GalaxyEngine PRIVATE
         glfw
         glm::glm-header-only
@@ -66,4 +61,6 @@ target_link_libraries(GalaxyEngine PRIVATE
         OpenAL::OpenAL
         ${BULLET_LIBRARIES}
 )
+
+# 添加 include 目录路径
 target_include_directories(GalaxyEngine PRIVATE include)
