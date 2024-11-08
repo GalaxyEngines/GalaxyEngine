@@ -7,28 +7,21 @@ project(GalaxyEngine LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# 包含 src/core 和 src/ui 目录中的头文件和源文件
-include_directories(src/core src/ui)
 
 # 查找所有核心源文件
-file(GLOB_RECURSE CORE_SOURCE src/core/*.cpp src/core/*.h)
-file(GLOB_RECURSE UI_SOURCE src/ui/*.cpp src/ui/*.h)
+file(GLOB_RECURSE CORE_SOURCE src/*.cpp)
 
 if(NOT CORE_SOURCE)
     message(FATAL_ERROR "No core source files found in src/core directory.")
 endif()
 
-if(NOT UI_SOURCE)
-    message(FATAL_ERROR "No UI source files found in src/ui directory.")
-endif()
 
 # 设置资源目录
 set(RESOURCE_DIR "${CMAKE_SOURCE_DIR}/resources")
 add_definitions(-DRESOURCE_PATH="${RESOURCE_DIR}")
 
 # 创建可执行文件，将核心文件和 UI 文件添加到目标源中
-add_executable(GalaxyEngine ${CORE_SOURCE} ${UI_SOURCE} src/main.cpp
-        src/ui/a.h)
+add_executable(GalaxyEngine ${CORE_SOURCE})
 
 # 添加资源复制命令
 add_custom_command(
