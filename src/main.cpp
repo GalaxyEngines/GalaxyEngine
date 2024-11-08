@@ -5,15 +5,15 @@
 #include "core/MemoryManager.h"
 #include "core/FiberManager.h"
 #include "core/AsyncLoader.h"
-#include "ui/a.h"  // UIInterface 的头文件
 
 int main() {
     // Step 1: 创建并初始化所有模块
-    MyEngine::VulkanBase VulkanBase;
-    TaskSchedulerModule taskScheduler;
-    ModuleManager moduleManager;
-    MyEngine::MemoryManager memoryManager;
-    MyEngine::AsyncLoader asyncLoader;
+    GE::VulkanBase vulkanModule;
+    GE::TaskSchedulerModule taskScheduler;
+    GE::ModuleManager moduleManager;
+    GE::MemoryManager memoryManager;
+    GE::FiberManager fiberManager;
+    GE::AsyncLoader asyncLoader;
 
     // 初始化 Vulkan 模块
     vulkanModule.initialize();
@@ -22,22 +22,12 @@ int main() {
     taskScheduler.initialize();
 
     // 初始化模块管理器
-    moduleManager.initialize();
-
-    // 初始化内存管理器
-    memoryManager.initialize();
-
-    // 初始化 Fiber 管理器
-    fiberManager.initialize();
+    moduleManager.InitializeModules();
 
     // 初始化异步加载器
     asyncLoader.initialize();
 
-    // Step 2: 初始化 UI 界面 (从 a.h 引入的 UI 界面)
-    UIInterface uiInterface;  // 从 a.h 中的类
-    uiInterface.initialize(vulkanModule);  // UI 依赖 Vulkan 进行渲染
-
-    // Step 3: 主循环
+    // Step 2: 主循环
     bool isRunning = true;
     while (isRunning) {
         // 更新 Vulkan 模块
@@ -46,19 +36,17 @@ int main() {
         // 更新任务调度器
         taskScheduler.update();
 
-        // 更新 UI 界面
-        uiInterface.update();
+        // 更新异步加载器
+        asyncLoader.update();
 
-        // 用户事件处理逻辑（例如关闭窗口）
-        isRunning = !uiInterface.shouldClose();  // 检查是否退出主循环
+        // 假设存在某种退出条件，在此例中直接退出循环
+        isRunning = false;  // 可以根据需要调整为实际退出条件
     }
 
-    // Step 4: 清理资源
-    uiInterface.shutdown();
+    // Step 3: 清理资源
     asyncLoader.shutdown();
     fiberManager.shutdown();
-    memoryManager.shutdown();
-    moduleManager.shutdown();
+    moduleManager.CleanupModules();
     taskScheduler.shutdown();
     vulkanModule.shutdown();
 

@@ -6,7 +6,7 @@
 #include <tuple>
 #include <vector>  // 修复 'vector' 未解析符号的错误
 
-namespace MyEngine {
+namespace GE {
 
 // 内存池类，用于内存分配和释放管理
 class MemoryPool {
@@ -53,7 +53,7 @@ private:
 };
 
 // 内存管理模块类，继承自 ModuleInterface
-class MemoryManagerModule : public MyEngine::ModuleInterface {
+class MemoryManagerModule : public GE::ModuleInterface {
 public:
     void initialize() override {
         pools.emplace(64, std::make_unique<MemoryPool>(64));
@@ -71,7 +71,7 @@ public:
         std::cout << "Received memory event: " << event << std::endl;
     }
 
-    void processTask(const MyEngine::Task& task) override {
+    void processTask(const GE::Task& task) override {
         std::string operation;
         size_t size;
         void* pointer;
@@ -135,6 +135,6 @@ private:
 } // namespace MyEngine
 
 // 创建 MemoryManagerModule 实例的函数
-extern "C" MyEngine::ModuleInterface* CreateModule() {
-    return new MyEngine::MemoryManagerModule();
+extern "C" GE::ModuleInterface* CreateModule() {
+    return new GE::MemoryManagerModule();
 }

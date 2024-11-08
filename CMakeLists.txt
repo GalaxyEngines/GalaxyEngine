@@ -6,8 +6,6 @@ set(CMAKE_TOOLCHAIN_FILE "${CMAKE_CURRENT_SOURCE_DIR}/vcpkg/vcpkg/scripts/builds
 project(GalaxyEngine LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-
 # 查找所有核心源文件
 file(GLOB_RECURSE CORE_SOURCE src/*.cpp)
 
@@ -54,6 +52,5 @@ target_link_libraries(GalaxyEngine PRIVATE
         OpenAL::OpenAL
         ${BULLET_LIBRARIES}
 )
-
 # 添加 include 目录路径
 target_include_directories(GalaxyEngine PRIVATE include)

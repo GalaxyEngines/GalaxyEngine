@@ -9,7 +9,7 @@
 #include <set>
 #include <optional>
 
-namespace MyEngine {
+namespace GE {
 
     class VulkanBase : public ModuleInterface {
     public:
@@ -35,7 +35,9 @@ namespace MyEngine {
         std::vector<std::string> getAvailableGPUs();
 
         // 渲染一帧
-        void renderFrame();  // 确保声明了 renderFrame()
+        void renderFrame();
+
+        // 获取渲染的图像
         void getRenderedImage();
 
     private:
@@ -69,7 +71,6 @@ namespace MyEngine {
         };
 
         QueueFamilyIndices findQueueFamilies(VkPhysicalDevice device);
-
         // Vulkan 扩展
         std::vector<const char*> getRequiredExtensions();
         bool checkDeviceExtensionSupport(VkPhysicalDevice device);
@@ -79,7 +80,7 @@ namespace MyEngine {
             VK_KHR_SWAPCHAIN_EXTENSION_NAME
         };
 
-        // 检查交换链支持
+        //jiegouti交换链
         struct SwapChainSupportDetails {
             VkSurfaceCapabilitiesKHR capabilities;
             std::vector<VkSurfaceFormatKHR> formats;

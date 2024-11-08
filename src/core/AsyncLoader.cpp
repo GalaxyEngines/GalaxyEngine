@@ -11,7 +11,7 @@
 #include <functional>
 #include <atomic>
 
-namespace MyEngine {
+namespace GE {
 
 class AsyncLoaderModule : public ModuleInterface {
 public:
@@ -43,7 +43,7 @@ public:
         // 处理事件的逻辑
     }
 
-    void processTask(const MyEngine::Task& task) override {  // 修正为接受 Task 类型
+    void processTask(const GE::Task& task) override {  // 修正为接受 Task 类型
         std::string taskData = task.GetData();  // 假设 Task 类有 GetData() 方法返回任务数据
         std::pair<std::string, std::function<void(std::shared_ptr<std::vector<char>>)>> loadTaskData = ParseLoadTaskData(taskData);
         auto& [resourcePath, callback] = loadTaskData;
