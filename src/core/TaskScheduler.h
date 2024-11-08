@@ -11,7 +11,7 @@
 #include <condition_variable>
 #include <atomic>
 
-class TaskSchedulerModule : public ModuleInterface {
+class TaskSchedulerModule : public MyEngine::ModuleInterface {
 public:
     TaskSchedulerModule();
     ~TaskSchedulerModule() override;
@@ -26,7 +26,7 @@ public:
     void OnEvent(const std::string& event) override;
 
     // 处理传入的任务
-    void ProcessTask(const Task& task) override;
+    void ProcessTask(const MyEngine::Task& task) override;
 
     // 提供给外部模块的任务调度接口，返回一个 future 以便获取结果
     template<typename Func, typename... Args>

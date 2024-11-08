@@ -5,6 +5,7 @@
 #include <memory>
 #include <tuple>
 #include <vector>  // 修复 'vector' 未解析符号的错误
+using namespace MyEngine;
 
 class MemoryPool {
 public:

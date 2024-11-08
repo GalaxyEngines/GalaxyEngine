@@ -9,12 +9,12 @@
 
 int main() {
     // Step 1: 创建并初始化所有模块
-    VulkanBase vulkanModule;
-    TaskScheduler taskScheduler;
+    MyEngine::VulkanBase VulkanBase;
+    TaskSchedulerModule taskScheduler;
     ModuleManager moduleManager;
-    MemoryManager memoryManager;
+    Myengine::MemoryManager memoryManager;
     FiberManager fiberManager;
-    AsyncLoader asyncLoader;
+    MyEngine::AsyncLoader asyncLoader;
 
     // 初始化 Vulkan 模块
     vulkanModule.initialize();

@@ -15,7 +15,7 @@ ModuleManager::~ModuleManager() {
     CleanupModules();
 }
 
-void ModuleManager::RegisterModule(const std::string& name, std::unique_ptr<ModuleInterface> module) {
+void ModuleManager::RegisterModule(const std::string& name, std::unique_ptr<MyEngine::ModuleInterface> module) {
     std::lock_guard<std::mutex> lock(moduleMutex);
     if (modules.find(name) != modules.end()) {
         throw std::runtime_error("模块已注册: " + name);
@@ -91,7 +91,7 @@ void ModuleManager::LoadModuleFromFile(const std::string& filePath, const std::s
         throw std::runtime_error("加载模块失败: " + filePath);
     }
 
-    using CreateModuleFunc = ModuleInterface* (*)();
+    using CreateModuleFunc = MyEngine::ModuleInterface* (*)();
 #ifdef _WIN32
     CreateModuleFunc createModule = reinterpret_cast<CreateModuleFunc>(GetProcAddress(handle, "CreateModule"));
 #else
@@ -107,7 +107,7 @@ void ModuleManager::LoadModuleFromFile(const std::string& filePath, const std::s
         throw std::runtime_error("未找到 CreateModule 函数: " + filePath);
     }
 
-    std::unique_ptr<ModuleInterface> modulePtr(createModule());
+    std::unique_ptr<MyEngine::ModuleInterface> modulePtr(createModule());
     if (!modulePtr) {
 #ifdef _WIN32
         FreeLibrary(handle);

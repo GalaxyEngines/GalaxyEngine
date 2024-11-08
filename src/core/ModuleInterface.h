@@ -33,7 +33,7 @@ namespace MyEngine {
     // 任务类
     class Task {
     public:
-        enum class TaskType { LoadResource, Compute };
+        enum class TaskType { LoadResource, Compute, renderFrame };
 
         Task(const std::string& data, TaskType type) : data_(data), type_(type) {}
 

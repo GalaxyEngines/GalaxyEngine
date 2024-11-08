@@ -36,6 +36,7 @@ namespace MyEngine {
 
         // 渲染一帧
         void renderFrame();  // 确保声明了 renderFrame()
+        void getRenderedImage();
 
     private:
         // Vulkan 实例和设备

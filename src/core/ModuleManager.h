@@ -15,7 +15,7 @@ public:
     ~ModuleManager();
 
     // 注册模块
-    void RegisterModule(const std::string& name, std::unique_ptr<ModuleInterface> module);
+    void RegisterModule(const std::string& name, std::unique_ptr<MyEngine::ModuleInterface> module);
 
     // 卸载模块
     void UnregisterModule(const std::string& name);
@@ -38,7 +38,7 @@ public:
     void UnloadModule(const std::string& name);
 
 private:
-    std::map<std::string, std::unique_ptr<ModuleInterface>> modules;  // 模块集合
+    std::map<std::string, std::unique_ptr<MyEngine::ModuleInterface>> modules;  // 模块集合
     std::map<std::string, std::vector<std::string>> dependencyGraph;  // 依赖关系图
     std::map<std::string, void*> loadedModules;  // 动态加载的模块
 
