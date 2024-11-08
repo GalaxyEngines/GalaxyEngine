@@ -12,8 +12,7 @@ int main() {
     MyEngine::VulkanBase VulkanBase;
     TaskSchedulerModule taskScheduler;
     ModuleManager moduleManager;
-    Myengine::MemoryManager memoryManager;
-    FiberManager fiberManager;
+    MyEngine::MemoryManager memoryManager;
     MyEngine::AsyncLoader asyncLoader;
 
     // 初始化 Vulkan 模块

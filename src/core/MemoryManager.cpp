@@ -5,8 +5,10 @@
 #include <memory>
 #include <tuple>
 #include <vector>  // 修复 'vector' 未解析符号的错误
-using namespace MyEngine;
 
+namespace MyEngine {
+
+// 内存池类，用于内存分配和释放管理
 class MemoryPool {
 public:
     MemoryPool(size_t blockSize, size_t initialBlocks = 1024)
@@ -50,26 +52,26 @@ private:
     std::mutex mutex;
 };
 
-// MemoryManagerModule 继承自已定义的 ModuleInterface
+// 内存管理模块类，继承自 ModuleInterface
 class MemoryManagerModule : public MyEngine::ModuleInterface {
 public:
-    void initialize() override {  // 实现 initialize() 以替换纯虚函数
+    void initialize() override {
         pools.emplace(64, std::make_unique<MemoryPool>(64));
         pools.emplace(256, std::make_unique<MemoryPool>(256));
         pools.emplace(1024, std::make_unique<MemoryPool>(1024));
         std::cout << "Memory Initialized with memory pools" << std::endl;
     }
 
-    void shutdown() override {  // 实现 shutdown() 以替换纯虚函数
+    void shutdown() override {
         pools.clear();
         std::cout << "Memory Cleaned up." << std::endl;
     }
 
-    void onEvent(const std::string& event) override {  // 实现 onEvent() 以替换纯虚函数
+    void onEvent(const std::string& event) override {
         std::cout << "Received memory event: " << event << std::endl;
     }
 
-    void processTask(const MyEngine::Task& task) override {  // 实现 processTask() 以替换纯虚函数
+    void processTask(const MyEngine::Task& task) override {
         std::string operation;
         size_t size;
         void* pointer;
@@ -85,10 +87,9 @@ public:
         }
     }
 
-    // 添加 update 函数以实现纯虚函数
+    // 实现更新函数
     void update() override {
         std::cout << "MemoryManagerModule update called." << std::endl;
-        // 更新模块的逻辑，可以根据需要实现
     }
 
     void* AllocateMemory(size_t size) {
@@ -127,12 +128,13 @@ private:
         std::string operation = "allocate";  // 模拟解析，默认操作为分配
         size_t size = 256;
         void* pointer = nullptr;
-
         return { operation, size, pointer };
     }
 };
 
-// 动态创建模块实例
+} // namespace MyEngine
+
+// 创建 MemoryManagerModule 实例的函数
 extern "C" MyEngine::ModuleInterface* CreateModule() {
-    return new MemoryManagerModule();
+    return new MyEngine::MemoryManagerModule();
 }

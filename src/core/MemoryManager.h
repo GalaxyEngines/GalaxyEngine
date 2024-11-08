@@ -2,7 +2,7 @@
 #define MEMORYMANAGER_H
 
 #include <cstddef>
-
+namespace MyEngine{}
 class Memory {
 public:
     virtual ~Memory() = default;

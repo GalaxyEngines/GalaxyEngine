@@ -1,0 +1,3 @@
+/home/ksk2kk/CLionProjects/GalaxyEngine/cmake-build-debug/CMakeFiles/GalaxyEngine.dir
+/home/ksk2kk/CLionProjects/GalaxyEngine/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/ksk2kk/CLionProjects/GalaxyEngine/cmake-build-debug/CMakeFiles/rebuild_cache.dir
