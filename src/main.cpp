@@ -9,7 +9,7 @@
 int main() {
     // Step 1: 创建并初始化所有模块
     GE::VulkanBase vulkanModule;
-    GE::TaskScheduler taskScheduler;
+    GE::TaskSchedulerModule taskScheduler;
     GE::ModuleManager moduleManager;
     GE::MemoryManager memoryManager;
     GE::FiberManager fiberManager;
@@ -22,13 +22,7 @@ int main() {
     taskScheduler.initialize();
 
     // 初始化模块管理器
-    moduleManager.initialize();
-
-    // 初始化内存管理器
-    memoryManager.initialize();
-
-    // 初始化 Fiber 管理器
-    fiberManager.initialize();
+    moduleManager.InitializeModules();
 
     // 初始化异步加载器
     asyncLoader.initialize();
@@ -42,15 +36,6 @@ int main() {
         // 更新任务调度器
         taskScheduler.update();
 
-        // 更新模块管理器
-        moduleManager.update();
-
-        // 更新内存管理器
-        memoryManager.update();
-
-        // 更新 Fiber 管理器
-        fiberManager.update();
-
         // 更新异步加载器
         asyncLoader.update();
 
@@ -61,8 +46,7 @@ int main() {
     // Step 3: 清理资源
     asyncLoader.shutdown();
     fiberManager.shutdown();
-    memoryManager.shutdown();
-    moduleManager.shutdown();
+    moduleManager.CleanupModules();
     taskScheduler.shutdown();
     vulkanModule.shutdown();
 

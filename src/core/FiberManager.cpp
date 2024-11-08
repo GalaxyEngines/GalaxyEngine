@@ -11,8 +11,9 @@
 #include <boost/context/fiber.hpp>
 #include <nlohmann/json.hpp>
 
+namespace GE {
+
 using json = nlohmann::json;
-using namespace GE;
 
 class FiberManagerModule : public ModuleInterface {
 public:
@@ -20,7 +21,7 @@ public:
 
     void initialize() override {
         schedulerThread = std::thread(&FiberManagerModule::SchedulerThreadFunc, this);
-        std::cout << "FiberManagerModule ." << std::endl;
+        std::cout << "FiberManagerModule initialized." << std::endl;
     }
 
     void shutdown() override {
@@ -32,7 +33,7 @@ public:
         if (schedulerThread.joinable()) {
             schedulerThread.join();
         }
-        std::cout << "FiberManagerModule Cleaned up." << std::endl;
+        std::cout << "FiberManagerModule cleaned up." << std::endl;
     }
 
     void onEvent(const std::string& event) override {
@@ -44,7 +45,15 @@ public:
         }
     }
 
-    void processTask(const std::string& taskData) override {
+    void processTask(const Task& task) override {
+        std::cout << "Processing task of type: " << static_cast<int>(task.GetType()) << std::endl;
+        EnqueueFiberTask([=]() {
+            std::cout << "Executing task with data: " << task.GetData() << std::endl;
+        });
+    }
+
+    // 重载版本，用于处理字符串任务数据
+    void processTask(const std::string& taskData) {
         auto fiberFunc = ParseFiberTaskData(taskData);
         EnqueueFiberTask(fiberFunc);
     }
@@ -108,11 +117,11 @@ private:
         std::string action = parsedData["action"];
         if (action == "complex_computation") {
             return []() {
-                std::cout << "Fiber complex computation..." << std::endl;
+                std::cout << "Fiber performing complex computation..." << std::endl;
             };
         }
         return []() {
-            std::cout << "boom fuck fiber task..." << std::endl;
+            std::cout << "Fiber handling a task..." << std::endl;
         };
     }
 };
@@ -120,3 +129,5 @@ private:
 extern "C" ModuleInterface* CreateModule() {
     return new FiberManagerModule();
 }
+
+} // namespace GE

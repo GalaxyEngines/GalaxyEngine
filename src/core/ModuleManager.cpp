@@ -11,7 +11,7 @@
     #include <dlfcn.h>    // Linux下的动态库加载
 #endif
 
-namespace MyEngine {
+namespace GE {
 
 // 析构函数，清理所有模块
 ModuleManager::~ModuleManager() {
@@ -182,4 +182,4 @@ bool ModuleManager::TopologicalSort(std::vector<std::string>& sortedModules) {
     return true;
 }
 
-} // namespace MyEngine
+} // namespace GE
