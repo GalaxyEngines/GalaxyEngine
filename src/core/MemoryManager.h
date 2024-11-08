@@ -1,23 +1,17 @@
 #ifndef MEMORYMANAGER_H
 #define MEMORYMANAGER_H
-
 #include <cstddef>
 #include <unordered_map>
 #include <memory>
 #include <mutex>
-
 namespace MyEngine {
     class MemoryPool;
-
-    // 内存基类接口
 class Memory {
 public:
     virtual ~Memory() = default;
-
-    // 分配内存的纯虚函数
+    // 分配内存
     virtual void* AllocateMemory(std::size_t size) = 0;
-
-    // 释放内存的纯虚函数
+    // 释放内存
     virtual void FreeMemory(void* ptr, std::size_t size) = 0;
 };
 
@@ -45,6 +39,6 @@ private:
     void ExpandPool(std::size_t size, std::size_t count);
 };
 
-} // namespace MyEngine
+}
 
-#endif // MEMORYMANAGER_H
+#endif //
