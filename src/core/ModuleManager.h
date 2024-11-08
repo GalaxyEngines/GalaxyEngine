@@ -9,13 +9,15 @@
 #include <unordered_set>
 #include "ModuleInterface.h"
 
+namespace MyEngine {
+
 class ModuleManager {
 public:
     ModuleManager() = default;
     ~ModuleManager();
 
     // 注册模块
-    void RegisterModule(const std::string& name, std::unique_ptr<MyEngine::ModuleInterface> module);
+    void RegisterModule(const std::string& name, std::unique_ptr<GE::ModuleInterface> module);
 
     // 卸载模块
     void UnregisterModule(const std::string& name);
@@ -38,14 +40,22 @@ public:
     void UnloadModule(const std::string& name);
 
 private:
-    std::map<std::string, std::unique_ptr<MyEngine::ModuleInterface>> modules;  // 模块集合
-    std::map<std::string, std::vector<std::string>> dependencyGraph;  // 依赖关系图
-    std::map<std::string, void*> loadedModules;  // 动态加载的模块
+    // 模块集合
+    std::map<std::string, std::unique_ptr<GE::ModuleInterface>> modules;
 
-    std::mutex moduleMutex;  // 线程安全
+    // 依赖关系图
+    std::map<std::string, std::vector<std::string>> dependencyGraph;
 
-    // 拓扑排序，返回拓扑排序结果
+    // 动态加载的模块句柄
+    std::map<std::string, void*> loadedModules;
+
+    // 线程安全的互斥锁
+    std::mutex moduleMutex;
+
+    // 拓扑排序，用于检测依赖关系中的循环并排序模块初始化顺序
     bool TopologicalSort(std::vector<std::string>& sortedModules);
 };
+
+} // namespace MyEngine
 
 #endif // MODULE_MANAGER_H

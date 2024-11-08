@@ -3,7 +3,7 @@
 
 #include <string>
 
-namespace MyEngine {
+namespace GE {
 
     // 模块的基类，定义了所有模块的通用接口
     class ModuleInterface {

@@ -11,7 +11,7 @@
 #include <nlohmann/json.hpp> // 使用数据格式（JSON）
 
 using json = nlohmann::json;
-using namespace MyEngine;
+using namespace GE;
 
 class TaskSchedulerModule : public ModuleInterface {
 public:

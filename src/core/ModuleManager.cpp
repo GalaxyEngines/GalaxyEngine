@@ -11,11 +11,15 @@
     #include <dlfcn.h>    // Linux下的动态库加载
 #endif
 
+namespace MyEngine {
+
+// 析构函数，清理所有模块
 ModuleManager::~ModuleManager() {
     CleanupModules();
 }
 
-void ModuleManager::RegisterModule(const std::string& name, std::unique_ptr<MyEngine::ModuleInterface> module) {
+// 注册模块
+void ModuleManager::RegisterModule(const std::string& name, std::unique_ptr<ModuleInterface> module) {
     std::lock_guard<std::mutex> lock(moduleMutex);
     if (modules.find(name) != modules.end()) {
         throw std::runtime_error("模块已注册: " + name);
@@ -23,6 +27,7 @@ void ModuleManager::RegisterModule(const std::string& name, std::unique_ptr<MyEn
     modules[name] = std::move(module);
 }
 
+// 注销模块
 void ModuleManager::UnregisterModule(const std::string& name) {
     std::lock_guard<std::mutex> lock(moduleMutex);
     auto it = modules.find(name);
@@ -32,6 +37,7 @@ void ModuleManager::UnregisterModule(const std::string& name) {
     }
 }
 
+// 初始化所有模块
 void ModuleManager::InitializeModules() {
     std::lock_guard<std::mutex> lock(moduleMutex);
     std::vector<std::string> sortedModules;
@@ -46,6 +52,7 @@ void ModuleManager::InitializeModules() {
     }
 }
 
+// 清理所有模块
 void ModuleManager::CleanupModules() {
     std::lock_guard<std::mutex> lock(moduleMutex);
     std::vector<std::string> sortedModules;
@@ -62,6 +69,7 @@ void ModuleManager::CleanupModules() {
     modules.clear();
 }
 
+// 事件处理
 void ModuleManager::OnEvent(const std::string& event) {
     std::lock_guard<std::mutex> lock(moduleMutex);
     for (auto& pair : modules) {
@@ -69,17 +77,20 @@ void ModuleManager::OnEvent(const std::string& event) {
     }
 }
 
+// 添加依赖关系
 void ModuleManager::AddDependency(const std::string& module, const std::string& dependency) {
     std::lock_guard<std::mutex> lock(moduleMutex);
     dependencyGraph[module].push_back(dependency);
 }
 
+// 移除依赖关系
 void ModuleManager::RemoveDependency(const std::string& module, const std::string& dependency) {
     std::lock_guard<std::mutex> lock(moduleMutex);
     auto& deps = dependencyGraph[module];
     deps.erase(std::remove(deps.begin(), deps.end(), dependency), deps.end());
 }
 
+// 从文件加载模块
 void ModuleManager::LoadModuleFromFile(const std::string& filePath, const std::string& moduleName) {
 #ifdef _WIN32
     HMODULE handle = LoadLibrary(filePath.c_str());
@@ -91,7 +102,7 @@ void ModuleManager::LoadModuleFromFile(const std::string& filePath, const std::s
         throw std::runtime_error("加载模块失败: " + filePath);
     }
 
-    using CreateModuleFunc = MyEngine::ModuleInterface* (*)();
+    using CreateModuleFunc = ModuleInterface* (*)();
 #ifdef _WIN32
     CreateModuleFunc createModule = reinterpret_cast<CreateModuleFunc>(GetProcAddress(handle, "CreateModule"));
 #else
@@ -107,7 +118,7 @@ void ModuleManager::LoadModuleFromFile(const std::string& filePath, const std::s
         throw std::runtime_error("未找到 CreateModule 函数: " + filePath);
     }
 
-    std::unique_ptr<MyEngine::ModuleInterface> modulePtr(createModule());
+    std::unique_ptr<ModuleInterface> modulePtr(createModule());
     if (!modulePtr) {
 #ifdef _WIN32
         FreeLibrary(handle);
@@ -121,6 +132,7 @@ void ModuleManager::LoadModuleFromFile(const std::string& filePath, const std::s
     loadedModules[moduleName] = handle;
 }
 
+// 卸载模块
 void ModuleManager::UnloadModule(const std::string& name) {
     UnregisterModule(name);
     auto it = loadedModules.find(name);
@@ -134,6 +146,7 @@ void ModuleManager::UnloadModule(const std::string& name) {
     }
 }
 
+// 拓扑排序检查循环依赖
 bool ModuleManager::TopologicalSort(std::vector<std::string>& sortedModules) {
     std::unordered_set<std::string> visited;
     std::unordered_set<std::string> onStack;
@@ -168,3 +181,5 @@ bool ModuleManager::TopologicalSort(std::vector<std::string>& sortedModules) {
     }
     return true;
 }
+
+} // namespace MyEngine

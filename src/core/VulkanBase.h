@@ -9,7 +9,7 @@
 #include <set>
 #include <optional>
 
-namespace MyEngine {
+namespace GE {
 
     class VulkanBase : public ModuleInterface {
     public:

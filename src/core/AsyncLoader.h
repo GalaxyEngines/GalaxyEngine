@@ -7,7 +7,7 @@
 #include <memory>
 #include <vector>
 
-namespace MyEngine {
+namespace GE {
 
     class AsyncLoader : public ModuleInterface {
     public:

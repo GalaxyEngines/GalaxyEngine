@@ -12,7 +12,7 @@
 #include <nlohmann/json.hpp>
 
 using json = nlohmann::json;
-using namespace MyEngine;
+using namespace GE;
 
 class FiberManagerModule : public ModuleInterface {
 public:

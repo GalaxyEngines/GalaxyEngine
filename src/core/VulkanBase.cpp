@@ -6,7 +6,7 @@
 #include <set>
 #include <optional>
 
-namespace MyEngine {
+namespace GE {
 
 // 构造函数
 VulkanBase::VulkanBase() : instance(VK_NULL_HANDLE), physicalDevice(VK_NULL_HANDLE), device(VK_NULL_HANDLE), surface(VK_NULL_HANDLE), windowHandle(nullptr) {}

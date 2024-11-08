@@ -11,7 +11,7 @@
 #include <functional>
 #include <atomic>
 
-namespace MyEngine {
+namespace GE {
 
 class AsyncLoaderModule : public ModuleInterface {
 public:

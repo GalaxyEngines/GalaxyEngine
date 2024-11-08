@@ -4,7 +4,7 @@
 #include <unordered_map>
 #include <memory>
 #include <mutex>
-namespace MyEngine {
+namespace GE {
     class MemoryPool;
 class Memory {
 public:

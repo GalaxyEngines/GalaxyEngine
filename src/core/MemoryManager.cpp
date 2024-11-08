@@ -6,7 +6,7 @@
 #include <tuple>
 #include <vector>  // 修复 'vector' 未解析符号的错误
 
-namespace MyEngine {
+namespace GE {
 
 // 内存池类，用于内存分配和释放管理
 class MemoryPool {

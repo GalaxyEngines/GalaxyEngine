@@ -2,7 +2,7 @@
 #include <iostream>
 #include <stdexcept>  // 引入标准异常库
 
-namespace MyEngine {
+namespace GE {
 
 // 构造函数，初始化模块
 ModuleInterface::ModuleInterface() : initialized(false), active(false) {
