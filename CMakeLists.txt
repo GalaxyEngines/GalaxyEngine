@@ -7,12 +7,9 @@ project(GalaxyEngine LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# 包含 src/core 和 src/ui 目录中的头文件和源文件
-include_directories(src/core src/ui)
 
 # 查找所有核心源文件
 file(GLOB_RECURSE CORE_SOURCE src/core/*.cpp src/core/*.h)
-file(GLOB_RECURSE UI_SOURCE src/ui/*.cpp src/ui/*.h)
 
 if(NOT CORE_SOURCE)
     message(FATAL_ERROR "No core source files found in src/core directory.")
