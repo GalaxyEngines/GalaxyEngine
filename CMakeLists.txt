@@ -38,7 +38,6 @@ find_package(yaml-cpp CONFIG REQUIRED)
 find_package(Bullet CONFIG REQUIRED)
 find_package(OpenAL CONFIG REQUIRED)
 find_package(Boost REQUIRED COMPONENTS context)
-find_package(spdlog CONFIG REQUIRED)
 
 # 包含 imgui 实现文件路径
 include_directories(${vcpkg_INCLUDE_DIRS}/imgui/backends)
@@ -54,7 +53,6 @@ target_link_libraries(GalaxyEngine PRIVATE
         OpenAL::OpenAL
         ${BULLET_LIBRARIES}
         Boost::context
-        spdlog::spdlog
 )
 # 添加 include 目录路径
 target_include_directories(GalaxyEngine PRIVATE include)
