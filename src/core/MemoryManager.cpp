@@ -133,8 +133,3 @@ private:
 };
 
 } // namespace MyEngine
-
-// 创建 MemoryManagerModule 实例的函数
-extern "C" GE::ModuleInterface* CreateModule() {
-    return new GE::MemoryManagerModule();
-}

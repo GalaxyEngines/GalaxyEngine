@@ -125,9 +125,4 @@ private:
         };
     }
 };
-
-extern "C" ModuleInterface* CreateModule() {
-    return new FiberManagerModule();
-}
-
 } // namespace GE
