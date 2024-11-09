@@ -8,4 +8,4 @@ else
     echo "vcpkg已安装，跳过安装。"
 fi
 
-vcpkg install glfw3 vulkan glm imgui nlohmann-json yaml-cpp openal-soft bullet3
+vcpkg install glfw3 vulkan glm imgui nlohmann-json yaml-cpp openal-soft bullet3 boost-context

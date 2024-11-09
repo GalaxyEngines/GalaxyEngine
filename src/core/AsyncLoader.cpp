@@ -156,8 +156,4 @@ private:
 };
 
 // 动态创建模块
-extern "C" ModuleInterface* CreateModule() {
-    return new AsyncLoaderModule();
-}
-
 }  // 命名空间结束

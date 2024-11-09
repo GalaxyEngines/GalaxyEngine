@@ -9,9 +9,9 @@
 int main() {
     // Step 1: 创建并初始化所有模块
     GE::VulkanBase vulkanModule;
-    GE::TaskSchedulerModule taskScheduler;
+    // GE::TaskSchedulerModule taskScheduler;
     GE::ModuleManager moduleManager;
-    GE::MemoryManager memoryManager;
+    // GE::MemoryManager memoryManager;
     GE::FiberManager fiberManager;
     GE::AsyncLoader asyncLoader;
 
@@ -19,7 +19,7 @@ int main() {
     vulkanModule.initialize();
 
     // 初始化任务调度器
-    taskScheduler.initialize();
+    // taskScheduler.initialize();
 
     // 初始化模块管理器
     moduleManager.InitializeModules();
@@ -34,7 +34,7 @@ int main() {
         vulkanModule.update();
 
         // 更新任务调度器
-        taskScheduler.update();
+        // taskScheduler.update();
 
         // 更新异步加载器
         asyncLoader.update();
@@ -47,7 +47,7 @@ int main() {
     asyncLoader.shutdown();
     fiberManager.shutdown();
     moduleManager.CleanupModules();
-    taskScheduler.shutdown();
+    // taskScheduler.shutdown();
     vulkanModule.shutdown();
 
     std::cout << "所有模块已成功关闭，程序结束。" << std::endl;

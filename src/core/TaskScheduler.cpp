@@ -129,8 +129,4 @@ private:
     }
 };
 
-extern "C" ModuleInterface* CreateModule() {
-    return new TaskSchedulerModule();
-}
-
 } // namespace GE
