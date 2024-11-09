@@ -5,7 +5,6 @@
 #include "core/MemoryManager.h"
 #include "core/FiberManager.h"
 #include "core/AsyncLoader.h"
-#include <spdlog/spdlog.h>
 
 #include "core/log/Logger.h"
 
