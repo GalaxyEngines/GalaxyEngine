@@ -19,9 +19,7 @@ set(RESOURCE_DIR "${CMAKE_SOURCE_DIR}/resources")
 add_definitions(-DRESOURCE_PATH="${RESOURCE_DIR}")
 
 # 创建可执行文件，将核心文件和 UI 文件添加到目标源中
-add_executable(GalaxyEngine ${CORE_SOURCE}
-        src/core/log/Logger.cpp
-        src/core/log/Logger.h)
+add_executable(GalaxyEngine ${CORE_SOURCE})
 
 # 添加资源复制命令
 add_custom_command(
