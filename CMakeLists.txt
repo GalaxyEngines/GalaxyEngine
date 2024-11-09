@@ -7,7 +7,7 @@ project(GalaxyEngine LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # 查找所有核心源文件
-file(GLOB_RECURSE CORE_SOURCE src/*.cpp)
+file(GLOB_RECURSE CORE_SOURCE src/*.cpp src/*.h)
 
 if(NOT CORE_SOURCE)
     message(FATAL_ERROR "No core source files found in src/core directory.")
@@ -19,7 +19,9 @@ set(RESOURCE_DIR "${CMAKE_SOURCE_DIR}/resources")
 add_definitions(-DRESOURCE_PATH="${RESOURCE_DIR}")
 
 # 创建可执行文件，将核心文件和 UI 文件添加到目标源中
-add_executable(GalaxyEngine ${CORE_SOURCE})
+add_executable(GalaxyEngine ${CORE_SOURCE}
+        src/core/log/Logger.cpp
+        src/core/log/Logger.h)
 
 # 添加资源复制命令
 add_custom_command(
@@ -38,6 +40,8 @@ find_package(yaml-cpp CONFIG REQUIRED)
 find_package(Bullet CONFIG REQUIRED)
 find_package(OpenAL CONFIG REQUIRED)
 find_package(Boost REQUIRED COMPONENTS context)
+find_package(spdlog CONFIG REQUIRED)
+
 # 包含 imgui 实现文件路径
 include_directories(${vcpkg_INCLUDE_DIRS}/imgui/backends)
 
@@ -52,6 +56,7 @@ target_link_libraries(GalaxyEngine PRIVATE
         OpenAL::OpenAL
         ${BULLET_LIBRARIES}
         Boost::context
+        spdlog::spdlog
 )
 # 添加 include 目录路径
 target_include_directories(GalaxyEngine PRIVATE include)

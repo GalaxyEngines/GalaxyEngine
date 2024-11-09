@@ -10,6 +10,6 @@ if not exist "installed" (
     echo vcpkg 已安装，跳过安装。
 )
 
-call vcpkg install glfw3 vulkan glm imgui yaml-cpp openal-soft bullet3 boost boost-context
+call vcpkg install glfw3 vulkan glm imgui yaml-cpp openal-soft bullet3 boost boost-context spdlog
 
 endlocal

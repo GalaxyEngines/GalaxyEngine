@@ -5,50 +5,42 @@
 #include "core/MemoryManager.h"
 #include "core/FiberManager.h"
 #include "core/AsyncLoader.h"
+#include <spdlog/spdlog.h>
+
+#include "core/log/Logger.h"
 
 int main() {
-    // Step 1: 创建并初始化所有模块
-    GE::VulkanBase vulkanModule;
+    // GE::VulkanBase vulkanModule;
     // GE::TaskSchedulerModule taskScheduler;
-    GE::ModuleManager moduleManager;
+    // GE::ModuleManager moduleManager;
     // GE::MemoryManager memoryManager;
-    GE::FiberManager fiberManager;
-    GE::AsyncLoader asyncLoader;
+    // GE::FiberManager fiberManager;
+    // GE::AsyncLoader asyncLoader;
 
-    // 初始化 Vulkan 模块
-    vulkanModule.initialize();
-
-    // 初始化任务调度器
+    // vulkanModule.initialize();
     // taskScheduler.initialize();
+    // moduleManager.InitializeModules();
+    // asyncLoader.initialize();
 
-    // 初始化模块管理器
-    moduleManager.InitializeModules();
+    // bool isRunning = true;
+    // while (isRunning) {
+        // vulkanModule.update();
+        // asyncLoader.update();
+        // isRunning = false;
+    // }
 
-    // 初始化异步加载器
-    asyncLoader.initialize();
-
-    // Step 2: 主循环
-    bool isRunning = true;
-    while (isRunning) {
-        // 更新 Vulkan 模块
-        vulkanModule.update();
-
-        // 更新任务调度器
-        // taskScheduler.update();
-
-        // 更新异步加载器
-        asyncLoader.update();
-
-        // 假设存在某种退出条件，在此例中直接退出循环
-        isRunning = false;  // 可以根据需要调整为实际退出条件
-    }
-
-    // Step 3: 清理资源
-    asyncLoader.shutdown();
-    fiberManager.shutdown();
-    moduleManager.CleanupModules();
+    // asyncLoader.shutdown();
+    // fiberManager.shutdown();
+    // moduleManager.CleanupModules();
     // taskScheduler.shutdown();
-    vulkanModule.shutdown();
+    // vulkanModule.shutdown();
+    GE::Logger logger{"logs"};
+
+    while (true) {
+        logger.log(GE::LogLevel::INFO, "Hello World!");
+
+        std::this_thread::sleep_for(std::chrono::seconds(3));
+    }
 
     std::cout << "所有模块已成功关闭，程序结束。" << std::endl;
     return 0;
