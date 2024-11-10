@@ -7,7 +7,6 @@
 #include "core/AsyncLoader.h"
 
 #include "core/log/Logger.h"
-
 int main() {
     // GE::VulkanBase vulkanModule;
     // GE::TaskSchedulerModule taskScheduler;
