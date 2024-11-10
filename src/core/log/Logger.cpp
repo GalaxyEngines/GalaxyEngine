@@ -1,10 +1,7 @@
 #include "Logger.h"
+#include "utils/Utils.h"
 
 #include <filesystem>
-#include <iomanip>
-#include <ctime>
-std::string getDateTime();
-std::string logLevelToString(GE::LogLevel logLevel);
 
 GE::Logger::Logger(const std::string& logFilePath) {
     if (!std::filesystem::exists(logFilePath)) std::filesystem::create_directory(logFilePath);
@@ -16,29 +13,18 @@ GE::Logger::~Logger() {
 }
 
 void GE::Logger::log(const LogLevel logLevel, const std::string& message)  {
-    const std::string logMessage = "[" + getDateTime() + "] " + "[" + logLevelToString(logLevel) + "]" + " >> " + message;
+    const std::string logMessage = "[" + getDateTime() + "] " + "[" + toString(logLevel) + "]" + " >> " + message;
     outputFile << logMessage << std::endl;
 }
 
-std::string getDateTime() {
-    const auto nowTime = std::chrono::system_clock::now();
-    const std::time_t currentTime = std::chrono::system_clock::to_time_t(nowTime);
-    const std::tm localTime = *std::localtime(&currentTime);
-
-    std::ostringstream oss;
-    oss << std::put_time(&localTime, "%Y-%m-%d %H:%M:%S");
-    std::string dateTime = oss.str();
-    return  dateTime;
-}
-
-std::string logLevelToString(const GE::LogLevel logLevel) {
+std::string GE::Logger::toString (const LogLevel logLevel) const {
     switch (logLevel) {
-        case GE::LogLevel::TRACE:    return "TRACE";
-        case GE::LogLevel::DEBUG:    return "DEBUG";
-        case GE::LogLevel::INFO:     return "INFO";
-        case GE::LogLevel::WARNING:  return "WARNING";
-        case GE::LogLevel::ERROR:    return "ERROR";
-        case GE::LogLevel::CRITICAL: return "CRITICAL";
+        case TRACE:    return "TRACE";
+        case DEBUG:    return "DEBUG";
+        case INFO:     return "INFO";
+        case WARNING:  return "WARNING";
+        case ERROR:    return "ERROR";
+        case CRITICAL: return "CRITICAL";
     }
     return "";
 }

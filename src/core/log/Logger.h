@@ -22,6 +22,8 @@ namespace GE {
         void log(LogLevel logLevel, const std::string& message);
     private:
         std::ofstream outputFile;
+
+        std::string toString(LogLevel logLevel) const;
     };
 }
 
