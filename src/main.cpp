@@ -35,11 +35,7 @@ int main() {
     // vulkanModule.shutdown();
     GE::Logger logger{"logs"};
 
-    while (true) {
-        logger.log(GE::LogLevel::INFO, "Hello World!");
-
-        std::this_thread::sleep_for(std::chrono::seconds(3));
-    }
+    logger.log(GE::LogLevel::INFO, "Hello World!");
 
     std::cout << "所有模块已成功关闭，程序结束。" << std::endl;
     return 0;

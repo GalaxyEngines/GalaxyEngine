@@ -6,6 +6,9 @@ set(CMAKE_TOOLCHAIN_FILE "${CMAKE_CURRENT_SOURCE_DIR}/vcpkg/vcpkg/scripts/builds
 project(GalaxyEngine LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/GalaxyEngine)
+
 # 查找所有核心源文件
 file(GLOB_RECURSE CORE_SOURCE src/*.cpp src/*.h)
 
@@ -39,9 +42,6 @@ find_package(Bullet CONFIG REQUIRED)
 find_package(OpenAL CONFIG REQUIRED)
 find_package(Boost REQUIRED COMPONENTS context)
 
-# 包含 imgui 实现文件路径
-include_directories(${vcpkg_INCLUDE_DIRS}/imgui/backends)
-
 # 链接库
 target_link_libraries(GalaxyEngine PRIVATE
         glfw
@@ -55,4 +55,4 @@ target_link_libraries(GalaxyEngine PRIVATE
         Boost::context
 )
 # 添加 include 目录路径
-target_include_directories(GalaxyEngine PRIVATE include)
+target_include_directories(GalaxyEngine PRIVATE src)
