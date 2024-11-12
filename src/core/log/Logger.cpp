@@ -19,12 +19,11 @@ void GE::Logger::log(const LogLevel logLevel, const std::string& message)  {
 
 std::string GE::Logger::toString (const LogLevel logLevel) const {
     switch (logLevel) {
-        case TRACE:    return "TRACE";
         case DEBUG:    return "DEBUG";
         case INFO:     return "INFO";
         case WARNING:  return "WARNING";
         case ERROR:    return "ERROR";
         case CRITICAL: return "CRITICAL";
+        default:       return " ";
     }
-    return "";
 }
