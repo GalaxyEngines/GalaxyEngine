@@ -5,7 +5,6 @@
 
 namespace GE {
     enum LogLevel {
-        TRACE,
         DEBUG,
         INFO,
         WARNING,

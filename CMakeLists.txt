@@ -17,7 +17,9 @@ file(GLOB_RECURSE CORE_SOURCE src/*.cpp src/*.h)
 set(RESOURCE_DIR "${CMAKE_SOURCE_DIR}/resources")
 add_definitions(-DRESOURCE_PATH="${RESOURCE_DIR}")
 
-add_executable(GalaxyEngine ${CORE_SOURCE})
+add_executable(GalaxyEngine ${CORE_SOURCE}
+        src/core/window/Window.cpp
+        src/core/window/Window.h)
 
 # 添加资源复制命令
 add_custom_command(
@@ -27,6 +29,7 @@ add_custom_command(
 )
 
 # 查找依赖项
+find_package(glfw3 CONFIG REQUIRED)
 find_package(glm CONFIG REQUIRED)
 find_package(nlohmann_json CONFIG REQUIRED)
 find_package(yaml-cpp CONFIG REQUIRED)
@@ -39,6 +42,7 @@ add_subdirectory(lib/GEui)
 add_subdirectory(lib/GERender)
 # 链接库
 target_link_libraries(GalaxyEngine PRIVATE
+        glfw
         glm::glm-header-only
         nlohmann_json::nlohmann_json
         yaml-cpp::yaml-cpp

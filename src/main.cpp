@@ -1,14 +1,74 @@
 #include <iostream>
+#include "core/log/Logger.h"
 #include "core/VulkanBase.h"
 #include "core/TaskScheduler.h"
 #include "core/ModuleManager.h"
 #include "core/MemoryManager.h"
 #include "core/FiberManager.h"
 #include "core/AsyncLoader.h"
+#include <core/window/Window.h>
 
 #include <render.h>
 
-#include "core/log/Logger.h"
+class GalaxyEngine {
+public:
+    void run();
+    GE::Logger logger{"logs"};
+private:
+    void initEngine();
+    void initWindow();
+    void initVulkan();
+    void loop();
+    void render();
+    void cleanup();
+
+    GE::Window window{};
+};
+
+void GalaxyEngine::run() {
+    initEngine();
+    initWindow();
+    initVulkan();
+    loop();
+    render();
+    cleanup();
+}
+
+void GalaxyEngine::initEngine() {
+    logger.log(GE::INFO, "初始化引擎...");
+    logger.log(GE::INFO, "初始化引擎...完成");
+}
+
+void GalaxyEngine::initWindow() {
+    logger.log(GE::INFO, "初始化窗口...");
+
+    window.createWindow(1920, 1080, "GalaxyEngine");
+    logger.log(GE::INFO, "初始化窗口...完成");
+}
+
+void GalaxyEngine::initVulkan() {
+    logger.log(GE::INFO, "初始化Vulkan...");
+    logger.log(GE::INFO, "初始化Vulkan...完成");
+}
+
+void GalaxyEngine::loop() {
+    logger.log(GE::INFO, "开始循环...");
+    while (!glfwWindowShouldClose(window.getWindow())) {
+        glfwPollEvents();
+    }
+    logger.log(GE::INFO, "循环...结束");
+}
+
+void GalaxyEngine::render() {
+    logger.log(GE::INFO, "开始渲染...");
+    logger.log(GE::INFO, "渲染...完成");
+}
+
+void GalaxyEngine::cleanup() {
+    logger.log(GE::INFO, "清理资源...");
+    logger.log(GE::INFO, "清理资源...完成");
+}
+
 int main() {
     // GE::VulkanBase vulkanModule;
     // GE::TaskSchedulerModule taskScheduler;
@@ -34,9 +94,11 @@ int main() {
     // moduleManager.CleanupModules();
     // taskScheduler.shutdown();
     // vulkanModule.shutdown();
-    GE::Logger logger{"logs"};
 
-    logger.log(GE::LogLevel::INFO, "Hello World!");
+    GalaxyEngine engine{};
+    engine.run();
+
+
 
     a();
 
