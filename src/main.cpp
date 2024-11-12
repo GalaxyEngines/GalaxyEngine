@@ -6,6 +6,8 @@
 #include "core/FiberManager.h"
 #include "core/AsyncLoader.h"
 
+#include <render.h>
+
 #include "core/log/Logger.h"
 int main() {
     // GE::VulkanBase vulkanModule;
@@ -35,6 +37,8 @@ int main() {
     GE::Logger logger{"logs"};
 
     logger.log(GE::LogLevel::INFO, "Hello World!");
+
+    a();
 
     std::cout << "所有模块已成功关闭，程序结束。" << std::endl;
     return 0;
