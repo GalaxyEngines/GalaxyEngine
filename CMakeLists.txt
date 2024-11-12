@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.30)
 # 设置VCPKG路径
-set(CMAKE_TOOLCHAIN_FILE "${CMAKE_CURRENT_SOURCE_DIR}/vcpkg/vcpkg/scripts/buildsystems/vcpkg.cmake")
+set(CMAKE_TOOLCHAIN_FILE "${CMAKE_CURRENT_SOURCE_DIR}/vcpkg/vcpkg/scripts/buildsystems/vcpkg.cmake" CACHE STRING "")
 
 # 项目信息
 project(GalaxyEngine LANGUAGES CXX)
@@ -26,32 +26,28 @@ add_custom_command(
         ${RESOURCE_DIR} $<TARGET_FILE_DIR:GalaxyEngine>/resources
 )
 
-add_subdirectory(lib/GEui)
-
 # 查找依赖项
-find_package(glfw3 CONFIG REQUIRED)
 find_package(glm CONFIG REQUIRED)
-find_package(Vulkan REQUIRED)
-find_package(imgui CONFIG REQUIRED)
 find_package(nlohmann_json CONFIG REQUIRED)
 find_package(yaml-cpp CONFIG REQUIRED)
 find_package(Bullet CONFIG REQUIRED)
 find_package(OpenAL CONFIG REQUIRED)
 find_package(Boost REQUIRED COMPONENTS context)
 
+
+add_subdirectory(lib/GEui)
+add_subdirectory(lib/GERender)
 # 链接库
 target_link_libraries(GalaxyEngine PRIVATE
-        glfw
         glm::glm-header-only
-        Vulkan::Vulkan
-        imgui::imgui
         nlohmann_json::nlohmann_json
         yaml-cpp::yaml-cpp
         OpenAL::OpenAL
         ${BULLET_LIBRARIES}
         Boost::context
         GEUi
+        GERender
 )
 # 添加 include 目录路径
 target_include_directories(GalaxyEngine PRIVATE src lib/GEui/src)
-
+target_include_directories(GalaxyEngine PRIVATE src lib/GERender/src)
