@@ -16,11 +16,11 @@ namespace GE {
 
          void createWindow(int width, int height, const char* title);
 
-        GLFWwindow* getWindow() const;
+        [[nodiscard]] GLFWwindow* getWindow() const;
     private:
         GLFWwindow* window{};
     };
 }
 
 
-#endif //WINDOW_H
+#endif

@@ -1,9 +1,7 @@
 //
 // Created by plaidmrdeer on 2024/11/12.
 //
-#define GLFW_INCLUDE_VULKAN
 #include "Window.h"
-#include <GLFW/glfw3.h>
 
 GE::Window::Window() {
     glfwInit();

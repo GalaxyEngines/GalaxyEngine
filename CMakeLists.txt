@@ -53,5 +53,5 @@ target_link_libraries(GalaxyEngine PRIVATE
         GERender
 )
 # 添加 include 目录路径
-target_include_directories(GalaxyEngine PRIVATE src lib/GEui/src)
-target_include_directories(GalaxyEngine PRIVATE src lib/GERender/src)
+target_include_directories(GalaxyEngine PRIVATE src lib/GEui/include)
+target_include_directories(GalaxyEngine PRIVATE src lib/GERender/include)

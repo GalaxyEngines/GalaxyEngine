@@ -8,8 +8,6 @@
 #include "core/AsyncLoader.h"
 #include <core/window/Window.h>
 
-#include <render.h>
-
 class GalaxyEngine {
 public:
     void run();
@@ -35,6 +33,7 @@ void GalaxyEngine::run() {
 }
 
 void GalaxyEngine::initEngine() {
+
     logger.log(GE::INFO, "初始化引擎...");
     logger.log(GE::INFO, "初始化引擎...完成");
 }
@@ -97,10 +96,6 @@ int main() {
 
     GalaxyEngine engine{};
     engine.run();
-
-
-
-    a();
 
     std::cout << "所有模块已成功关闭，程序结束。" << std::endl;
     return 0;
