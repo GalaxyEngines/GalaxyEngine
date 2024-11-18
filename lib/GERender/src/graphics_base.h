@@ -5,12 +5,12 @@
 #ifndef VULKANBASE_H
 #define VULKANBASE_H
 
-#include <vulkan/vulkan.h>
-namespace GE {
-    class GraphicsBase {
+namespace GE
+{
+    class GraphicsBase
+    {
     public:
-
-    private:
+        void initializ();
     };
 }
 

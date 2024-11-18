@@ -3,8 +3,10 @@
 #include <fstream>
 #include <string>
 
-namespace GE {
-    enum LogLevel {
+namespace GE
+{
+    enum LogLevel
+    {
         DEBUG,
         INFO,
         WARNING,
@@ -13,7 +15,8 @@ namespace GE {
 
     };
 
-    class Logger {
+    class Logger
+    {
     public:
         explicit Logger(const std::string& logFilePath);
         ~Logger();
