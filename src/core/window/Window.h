@@ -8,8 +8,10 @@
 
 #include <GLFW/glfw3.h>
 
-namespace GE {
-    class Window {
+namespace GE
+{
+    class Window
+    {
     public:
         Window();
         ~Window();

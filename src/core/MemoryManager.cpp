@@ -23,7 +23,7 @@ public:
     }
 
     void* Allocate() {
-        std::lock_guard<std::mutex> lock(mutex);
+        std::lock_guard lock(mutex);
         if (freeBlocks.empty()) {
             ExpandPool(blocks.size());
         }
@@ -38,8 +38,10 @@ public:
     }
 
 private:
-    void ExpandPool(size_t count) {
-        for (size_t i = 0; i < count; ++i) {
+    void ExpandPool(size_t count)
+    {
+        for (size_t i = 0; i < count; ++i)
+        {
             void* block = ::operator new(blockSize);
             freeBlocks.push_back(block);
             blocks.push_back(block);

@@ -17,9 +17,8 @@ file(GLOB_RECURSE CORE_SOURCE src/*.cpp src/*.h)
 set(RESOURCE_DIR "${CMAKE_SOURCE_DIR}/resources")
 add_definitions(-DRESOURCE_PATH="${RESOURCE_DIR}")
 
-add_executable(GalaxyEngine ${CORE_SOURCE}
-        src/core/window/Window.cpp
-        src/core/window/Window.h)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
+add_executable(GalaxyEngine ${CORE_SOURCE})
 
 # 添加资源复制命令
 add_custom_command(
@@ -40,6 +39,7 @@ find_package(Boost REQUIRED COMPONENTS context)
 
 add_subdirectory(lib/GEui)
 add_subdirectory(lib/GERender)
+add_subdirectory(lib/vk-bootstrap)
 # 链接库
 target_link_libraries(GalaxyEngine PRIVATE
         glfw
@@ -51,7 +51,10 @@ target_link_libraries(GalaxyEngine PRIVATE
         Boost::context
         GEUi
         GERender
+        vk-bootstrap::vk-bootstrap
 )
 # 添加 include 目录路径
-target_include_directories(GalaxyEngine PRIVATE src lib/GEui/include)
-target_include_directories(GalaxyEngine PRIVATE src lib/GERender/include)
+target_include_directories(GalaxyEngine PRIVATE lib/GEui/include)
+target_include_directories(GalaxyEngine PRIVATE lib/GERender/include)
+
+target_include_directories(GalaxyEngine PRIVATE src)
