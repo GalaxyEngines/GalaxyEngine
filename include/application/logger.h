@@ -3,7 +3,7 @@
 #include <fstream>
 #include <string>
 
-namespace GE
+namespace ge
 {
     enum LogLevel
     {
@@ -18,14 +18,14 @@ namespace GE
     class Logger
     {
     public:
-        explicit Logger(const std::string& logFilePath);
+        explicit Logger(const std::string& log_file_path_);
         ~Logger();
 
-        void log(LogLevel logLevel, const std::string& message);
+        void log(LogLevel log_level_, const std::string& message_);
     private:
-        std::ofstream outputFile;
+        std::ofstream output_file_;
 
-        std::string toString(LogLevel logLevel) const;
+        static std::string to_string(LogLevel log_level_) ;
     };
 }
 

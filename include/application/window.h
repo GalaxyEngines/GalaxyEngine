@@ -8,7 +8,7 @@
 
 #include <GLFW/glfw3.h>
 
-namespace GE
+namespace ge
 {
     class Window
     {
@@ -16,11 +16,11 @@ namespace GE
         Window();
         ~Window();
 
-         void createWindow(int width, int height, const char* title);
+         void create_window(int width_, int height_, const char* title_);
 
-        [[nodiscard]] GLFWwindow* getWindow() const;
+        [[nodiscard]] GLFWwindow* get_window() const;
     private:
-        GLFWwindow* window{};
+        GLFWwindow* window_{};
     };
 }
 

@@ -6,7 +6,6 @@
 #define UTILS_H
 
 #include <string>
+std::string get_date_time();
 
-std::string getDateTime();
-
-#endif //UTILS_H
+#endif
