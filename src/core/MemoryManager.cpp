@@ -8,7 +8,7 @@
 
 namespace GE {
 
-// 内存池类，用于内存分配和释放管理
+// 内存池类
 class MemoryPool {
 public:
     MemoryPool(size_t blockSize, size_t initialBlocks = 1024)
@@ -66,11 +66,11 @@ public:
 
     void shutdown() override {
         pools.clear();
-        std::cout << "Memory Cleaned up." << std::endl;
+        std::cout << "内存释放." << std::endl;
     }
 
     void onEvent(const std::string& event) override {
-        std::cout << "Received memory event: " << event << std::endl;
+        std::cout << "内存 event: " << event << std::endl;
     }
 
     void processTask(const GE::Task& task) override {
@@ -89,7 +89,7 @@ public:
         }
     }
 
-    // 实现更新函数
+    // 更新函数
     void update() override {
         std::cout << "MemoryManagerModule update called." << std::endl;
     }
@@ -127,11 +127,11 @@ private:
     }
 
     std::tuple<std::string, size_t, void*> ParseMemoryTaskData(const std::string& data) {
-        std::string operation = "allocate";  // 模拟解析，默认操作为分配
+        std::string operation = "allocate";  // 假的
         size_t size = 256;
         void* pointer = nullptr;
         return { operation, size, pointer };
     }
 };
 
-} // namespace MyEngine
+} 
